@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+{% load static %}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login - B-Bordados</title>
-<link rel="stylesheet" href="StyleLogin.css">
+<link rel="stylesheet" href="{% static 'accounts/StyleLogin.css' %}">
 </head>
 
 <body>
@@ -19,12 +20,15 @@
             Entrar com Facebook
         </button>
         <div class="divider"><span>ou</span></div>
-        <div class="password-field">
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Senha">
-        </div>
-        <button class="btn-primary">Entrar</button>
-        <small class="smalli"> Ainda Não Possui Uma Conta? <a href="/frontend/SignUP/SignUp.html" class="siginup">  Criar Conta</a> </small>
+        <form action="/login/" method="post">
+                {% csrf_token %}
+            <div class="password-field">
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Senha">
+            </div>
+                <button class="btn-primary" type="submit">Entrar</button>
+        </form>
+        <small class="smalli"> Ainda Não Possui Uma Conta? <a href="{% url 'register' %}" class="siginup">  Criar Conta</a> </small>
     </div>
 
 </body>
