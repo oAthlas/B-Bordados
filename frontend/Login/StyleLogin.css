@@ -3,7 +3,7 @@
         margin: 0;
         font-family: "Poppins", sans-serif;
         letter-spacing: 0.6px;
-        background: #f7f3eb;
+        background: #f9f6ef;
         display: flex;
         justify-content: center;
         align-items: flex-start;
@@ -18,7 +18,7 @@
        padding-top: 0;
     }
     .container {
-        background: white;
+        background: #f9f6ef;
         width: 350px;
         height: 600px;
         margin-top: 50px;
@@ -43,7 +43,7 @@
     }
 
     .google {
-        background: #eceff1;
+        background: #eae9e9;
         letter-spacing: 0.5px;
     }
 
@@ -78,6 +78,7 @@
         margin-bottom: 19px;
         border-radius: 7px;
         border: 1px solid #000;
+        background-color: #f9f6ef;
         font-size: 14px;
       padding-right: 0px;
        
@@ -98,13 +99,13 @@
         width: 100%;
         padding: 12px;
         margin-top: none;
-        background: #ff008c;
+        background: #f1119b;
         border: none;
         border-radius: 7px;
         font-size: 15px;
         color: white;
         cursor: pointer;
-        border: 2px solid #ff008c;
+        border: 2px solid #f1119b;
         margin-bottom: 10px;
     }
 
@@ -121,7 +122,7 @@
       .siginup {
         text-decoration: none;
         text-transform: none;
-        color: #ff008c;
+        color: #f1119b;
         
      }
 
