@@ -2,64 +2,207 @@ body{
     background-color: brown;
     display: flex;
     height: 100%;
-    margin-top: 20px;
+    margin: 0;
+    padding-left: 0;
     justify-content: center;
 }
 
 .logo{
-    margin-right: 100px;
+    margin-right: 130px;
     width: 230px;
+    margin-left: 65px;
 }
 
 .pesquisarr {
     display: flex;
-    margin-right: 90px;
-    width: 697px;
+    margin-right: 0px;
+    width: 590px;
     align-items: center;
     padding-left: 15px;
-    padding-right: 60px;
+    padding-right: 70px;
     border-radius: 15px;
     border: none;
-    
     font-size: 15px;
     text-decoration: none;
     text-transform: none;
+    
+    background-color:#e0e1e7;
+    height: 35px;
+    margin-top: 7px;
 }
 .cilindro{
     margin-top: 5px;
     height: 31.5px;
-    margin-right: 15px;
-    background-color: azure;
+    margin-right: 10px;
+    background-color: #eae9e9;
     padding: 5px;
-    border-radius: 50px;
+    border-radius: 15px;
     display: flex;
     gap: 10px;
+    border: 1px #222 solid;
 }
 
-.circle{
-    background-color: blue;
-    padding: 16px;
-    border-radius: 100px;
-    margin: none;
-    
-}
+
 
 .menu{
     display: flex;
     width: 20px;
     height: 20px;
     padding-top: 5px;
-    padding-left: 10px;
+    padding: 5px;
     margin: none;
     padding: none;
     margin-top: 1px;
+    cursor: pointer;
 }
 
 .direita{
     display: flex;
-    gap: 90px;
-    
+   margin-top: 25px;
     height: 50px;
     
 }
 
+.carrinho{
+    cursor: pointer;
+    margin-right: 70px;
+    height: 30px;
+    width: 35px;
+    margin-top: 3px;
+}
+
+.cabeçario{
+    background-color: #eae9e9;
+    display: flex;
+    height: 100px;
+    width: 100%;
+    
+    border-bottom: 2px solid #222;
+}
+.lupaimg{
+    width: 20px;
+    
+}
+.lupa {
+    height: 35px;
+    width: 20px;
+    border: none;
+    cursor: pointer;
+    
+    background-color:#e0e1e7 ;
+    margin-left: -40px;
+    margin-right: 280px;
+    margin-top: 8px;
+}
+
+
+@media (max-width: 1500px) {
+
+    .cabeçario {
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+        gap: 15px;
+       
+    }
+
+    .logo {
+        width: 150px;
+        margin: 0;
+        display: flex;
+    }
+
+    .pesquisarr {
+        height: 70%;
+        width: 100%;
+        max-width: 600px;
+        max-height: 70%;
+        margin: 0;
+        padding-left: 12px;
+        padding-right: 20px;
+    }
+
+    .direita {
+        width: 100%;
+        justify-content: center;
+        margin: 0;
+        margin-top: 5px;
+        
+    }
+
+    .carrinho {
+        margin-right: 20%;
+        width: auto;
+        height: 60%;
+        
+   }
+}
+
+@media (max-width: 600px) {
+
+    .logo {
+        width: 130px;
+    }
+
+    .pesquisarr {
+        font-size: 14px;
+        padding-left: 10px;
+        padding-right: 15px;
+        height: 70%;
+    }
+
+    .lupa {
+        width: 35px;
+        margin: 0;
+    }
+
+    .cilindro {
+        height: 26px;
+        padding: 4px 8px;
+        gap: 6px;
+    }
+
+    .menu {
+        width: 18px;
+        height: 18px;
+    }
+
+    .direita {
+        gap: 10px;
+    }
+    
+
+}
+@media (max-width: 480px) {
+
+    .logo {
+        width: 110px;
+    }
+
+    .pesquisarr {
+        font-size: 13px;
+        padding-left: 8px;
+        padding-right: 12px;
+    }
+
+    .lupa {
+        width: 40px;
+    }
+
+    .cilindro {
+        padding: 3px ;
+        
+        height: 60%;
+       
+        margin-left: 10%;
+    }
+
+
+}
+
+.produtos{
+    display: flex;
+    justify-content: center;
+    height: 100px;
+}
