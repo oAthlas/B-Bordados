@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+{% load static %}
+{% load socialaccount %}
+{% if messages %}
+    <script>
+        {% for message in messages %}
+            alert("{{ message }}");
+        {% endfor %}
+    </script>
+{% endif %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - B-Bordados</title>
+<link rel="stylesheet" href="{% static 'accounts/StyleLogin.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <button class="btn-social google"
+            onclick="window.location.href='{% provider_login_url 'google' %}'">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="20">
+            Entrar com Google
+        </button>
+        <button class="btn-social facebook"
+            onclick="window.location.href='{% provider_login_url 'facebook' %}'">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="20">
+            Entrar com Facebook
+        </button>
+        <div class="divider"><span>ou</span></div>
+        <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+            <div class="password-field">
+                <input type="text" name="username" placeholder="Nome de usuário">
+                <input type="password" name="password" placeholder="Senha">
+            </div>
+                <button class="btn-primary" type="submit">Entrar</button>
+        </form>
+        <small class="smalli"> Ainda Não Possui Uma Conta? <a href="{% url 'register' %}" class="siginup">  Criar Conta</a> </small>
+    </div>
+
+</body>
+</html>
