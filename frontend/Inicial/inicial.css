@@ -1,19 +1,29 @@
+/* Corpo da página*/
 body{
-    background-color: brown;
+    background-color: #f9f6ef;
     display: block;
     height: 100%;
     margin: 0;
     padding-left: 0;
-    justify-content: center;
 }
-
+/* cabeçario*/
+header{
+    position: fixed;
+    margin-top: -350px;
+    height: 100px;
+    box-shadow: 0 1px 10px 2px #dae2e2 ;
+    background-color: #f9f6ef;
+    width:100%;
+}
+/* Logo B-Bordados*/
 .logo{
     margin-right: 130px;
     width: 230px;
     margin-left: 65px;
+    margin-top: 30px;
 }
-
-.pesquisarr {
+/* imput de pesquisa*/
+.pesquisa {
     display: flex;
     margin-right: 0px;
     width: 590px;
@@ -25,25 +35,37 @@ body{
     font-size: 15px;
     text-decoration: none;
     text-transform: none;
-    
-    background-color:#e0e1e7;
+    background-color:#eae9e9;
     height: 35px;
     margin-top: 7px;
 }
-.cilindro{
-    margin-top: 5px;
+
+.lupaimg{
+    width: 20px;
+}
+.lupa {
+    height: 35px;
+    width: 20px;
+    border: none;
+    cursor: pointer;
+    
+    background-color:#eae9e9 ;
+    margin-left: -40px;
+    margin-right: 280px;
+    margin-top: 8px;
+}
+
+/* Menu Hamburguer*/
+.MenuHamburguer{
+    margin-top: 4px;
     height: 31.5px;
     margin-right: 10px;
-    background-color: #eae9e9;
+    background-color: #f9f6ef;
     padding: 5px;
     border-radius: 15px;
     display: flex;
     gap: 10px;
-    border: 1px #222 solid;
 }
-
-
-
 .menu{
     display: flex;
     width: 20px;
@@ -52,158 +74,60 @@ body{
     padding: 5px;
     margin: none;
     padding: none;
-    margin-top: 1px;
+    margin-top: 3px;
     cursor: pointer;
 }
-
+/* Grupo Imput com Menu hamburguer*/
 .direita{
     display: flex;
-   margin-top: 25px;
+   margin-top: 0;
     height: 50px;
-    
+    margin-left: 420px;
+    margin-top: -45px;
 }
-
+/* Carrinho de compras*/
 .carrinho{
     cursor: pointer;
     margin-right: 70px;
     height: 30px;
     width: 35px;
-    margin-top: 3px;
+    margin-top: 5px;
 }
 
-.cabeçario{
-    background-color: #eae9e9;
-    display: flex;
-    height: 100px;
-    width: 100%;
+/* Texto, centro da página*/
+.texto{
     
-    border-bottom: 2px solid #222;
+    margin-left: 63px;
+    margin-top: 350px;
+    font-family: "Poppins", sans-serif;
+    font-size: 35px;
 }
-.lupaimg{
-    width: 20px;
-    
+/* botões de filtro*/
+.filtro{
+    margin-left: 62px;  
 }
-.lupa {
-    height: 35px;
-    width: 20px;
+.filtro button{  
+    padding: 15px;
+    margin-right: 25px;
+    border-radius: 10px;
     border: none;
+    background-color: rgb(195, 194, 194);
+    margin-top: -5px;
     cursor: pointer;
-    
-    background-color:#e0e1e7 ;
-    margin-left: -40px;
-    margin-right: 280px;
-    margin-top: 8px;
 }
 
-
-@media (max-width: 1500px) {
-
-    .cabeçario {
-        height: auto;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 10px;
-        gap: 15px;
-       
-    }
-
-    .logo {
-        width: 150px;
-        margin: 0;
-        display: flex;
-    }
-
-    .pesquisarr {
-        height: 70%;
-        width: 100%;
-        max-width: 600px;
-        max-height: 70%;
-        margin: 0;
-        padding-left: 12px;
-        padding-right: 20px;
-    }
-
-    .direita {
-        width: 100%;
-        justify-content: center;
-        margin: 0;
-        margin-top: 5px;
-        
-    }
-
-    .carrinho {
-        margin-right: 20%;
-        width: auto;
-        height: 60%;
-        
-   }
+.filtro button:hover{
+    background-color: #f1119b;
+    color: #e0e1e7;
 }
-
-@media (max-width: 600px) {
-
-    .logo {
-        width: 130px;
-    }
-
-    .pesquisarr {
-        font-size: 14px;
-        padding-left: 10px;
-        padding-right: 15px;
-        height: 70%;
-    }
-
-    .lupa {
-        width: 35px;
-        margin: 0;
-    }
-
-    .cilindro {
-        height: 26px;
-        padding: 4px 8px;
-        gap: 6px;
-    }
-
-    .menu {
-        width: 18px;
-        height: 18px;
-    }
-
-    .direita {
-        gap: 10px;
-    }
-    
-
-}
-@media (max-width: 480px) {
-
-    .logo {
-        width: 110px;
-    }
-
-    .pesquisarr {
-        font-size: 13px;
-        padding-left: 8px;
-        padding-right: 12px;
-    }
-
-    .lupa {
-        width: 40px;
-    }
-
-    .cilindro {
-        padding: 3px ;
-        
-        height: 60%;
-       
-        margin-left: 10%;
-    }
-
-
-}
-
+/* Produtos*/
 .produtos{
-    display: flex;
-    justify-content: center;
-    height: 100px;
-    margin-top: 50px;
+    margin-left: 62px;
 }
+.produtos img{
+    margin-top: 40px;
+    height: 325px;
+    margin-right: 30px;
+    border-radius: 18px;
+}
+
