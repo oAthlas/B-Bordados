@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="inicial.css">
+    <link rel="stylesheet" href="{% static 'home/inicial.css' %}">
 </head>
 <body>
     <div class="cabeçario">
-        <img src="/logo_bbordados.svg" alt="" class="logo">
+        <img src="{% static 'home/logo_bbordados.svg' %}" alt="" class="logo">
         <div class="direita"> 
             <input type="text" name="pesquisar" id="pesquisar" placeholder="Pesquisar" class="pesquisarr" ><button class="lupa"><img src="https://img.icons8.com/?size=100&id=e4NkZ7kWAD7f&format=png&color=000000" alt="" class="lupaimg"></button> 
             <img src="https://img.icons8.com/?size=100&id=59997&format=png&color=000000" alt="" style="padding-top: 7px;" width="40px"; height="37px"; class="carrinho" >
