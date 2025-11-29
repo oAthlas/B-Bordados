@@ -8,11 +8,12 @@
 <body>
     <h1>Avaailable Products</h1>
 
-    {% for product in products %}
+    {% for i in products %}
         <div>
-            <h2>{{ product.name }}</h2>
-            <p>{{ product.description }}</p>
-            <p>Price: ${{ product.price }}</p>
+            <h2>{{ i.name }}</h2>
+            <p>{{ i.description }}</p>
+            <p>Price: ${{ i.price }}</p>
+            <img src="{{ i.image.url }}" alt="{{ i.name }}">
         </div>
     {% empty %}
         <p>No products available.</p>

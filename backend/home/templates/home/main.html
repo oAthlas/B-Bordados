@@ -4,14 +4,14 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>B Bordados</title>
     <link rel="stylesheet" href="{% static 'home/inicial.css' %}">
 </head>
 <body>
     <!-- Cabeçario da pagina em header -->
     <header class="cabeçario">
     
-        <img src="{% static 'home/logo_bbordados.svg' %}" alt="" class="logo">
+        <a href="{% url 'home' %}"><img src="{% static 'home/logo_bbordados.svg' %}" alt="" class="logo"></a>
         <div class="direita"> 
             <input type="text" name="pesquisar" id="pesquisar" placeholder="Pesquisar" class="pesquisa" >
             <button class="lupa"><img src="https://img.icons8.com/?size=100&id=e4NkZ7kWAD7f&format=png&color=000000" alt="" class="lupaimg"></button> 
@@ -27,20 +27,19 @@
             <!-- Botões de filtro -->
     <div class="filtro">
             
-            <button>aaaaaaaaa</button>
-            <button>bbbbbbbbb</button>
-            <button>cccccccc</button>
-            <button>ddddddddd</button>
+        <a href="?sort=price_asc"><button>Mais baratos</button></a>
+        <a href="?sort=price_desc"><button>Mais caros</button></a>
+        <a href="?sort=newest"><button>Novos</button></a>
+        <a href="?sort=oldest"><button>Antigos</button></a>
+        <a href="?sort=name_asc"><button>A-Z</button></a>
+        <a href="?sort=name_desc"><button>Z-A</button></a>
         
     </div>      
-
             <!-- arquivos de venda -->
         <div class="produtos">
-            <img src="https://st2.depositphotos.com/1731889/7680/i/450/depositphotos_76802369-stock-photo-nature-and-landscapes-of-greenland.jpg" alt="">
-            <img src="https://st2.depositphotos.com/1731889/7680/i/450/depositphotos_76802369-stock-photo-nature-and-landscapes-of-greenland.jpg" alt="">
-            <img src="https://st2.depositphotos.com/1731889/7680/i/450/depositphotos_76802369-stock-photo-nature-and-landscapes-of-greenland.jpg" alt="">
-            <img src="https://st2.depositphotos.com/1731889/7680/i/450/depositphotos_76802369-stock-photo-nature-and-landscapes-of-greenland.jpg" alt="">
+        {% for product in products %}
+            <a href="{% url 'product_show' product.id %}"><img src="{{ product.image.url }}" alt="{{ product.name }}"></a>
+        {% endfor %}
         </div>
-
 </body>
 </html>
