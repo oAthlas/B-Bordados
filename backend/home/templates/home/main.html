@@ -21,6 +21,45 @@
             </div>
     </header>
 
+
+    <div class="slider">
+
+        <div class="slides">
+            <input type="radio" name="radio-bnt" id="radio1">
+            <input type="radio" name="radio-bnt" id="radio2">
+            <input type="radio" name="radio-bnt" id="radio3">
+            <input type="radio" name="radio-bnt" id="radio4">
+            
+            <div class="slide first">
+                <img src="https://blog.saninternet.com/wp-content/uploads/2017/11/san-banner-successo-1.jpg" alt="imagem 1"/>
+            </div>
+            <div class="slide">
+                <img src="https://blog.saninternet.com/wp-content/uploads/2017/11/san-banner-successo-2.jpg" alt="imagem 2"/>
+            </div>
+            <div class="slide">
+                <img src="https://blog.saninternet.com/wp-content/uploads/2017/11/san-banner-successo-6.jpg" alt="imagem 3"/>
+            </div>
+            <div class="slide">
+                <img src="https://blog.saninternet.com/wp-content/uploads/2017/11/san-banner-successo-3.jpg" alt="imagem 4"/>
+            </div>
+        
+            <div class="navigation-auto">
+                <div class="auto-bnt1"></div>
+                <div class="auto-bnt2"></div>
+                <div class="auto-bnt3"></div>
+                <div class="auto-bnt4"></div>
+            </div>
+        </div>
+
+        <div class="manual-navigation">
+            <label for="radio1" class="manual-bnt"></label>
+            <label for="radio2" class="manual-bnt"></label>
+            <label for="radio3" class="manual-bnt"></label>
+            <label for="radio4" class="manual-bnt"></label>
+        </div>
+
+
+    </div>
             <!-- texto, centro da página -->
     <h1 class="texto"> Produtos Em Destaque </h1>
 
@@ -39,6 +78,8 @@
         <div class="produtos">
         {% for product in products %}
             <a href="{% url 'product_show' product.id %}"><img src="{{ product.image.url }}" alt="{{ product.name }}"></a>
+            <p>{{ product.name }}</p>
+            <p>R${{ product.price }}</p>
         {% endfor %}
         </div>
 </body>
