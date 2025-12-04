@@ -121,18 +121,22 @@ header{
 }
 
 .filtro button:hover{
-    background-color: #210ecd;
+    background-color: #d7a611;
     color: #e0e1e7;
 }
 /* Produtos*/
 .produtos{
     margin-left: 62px;
+    display: flex;
+    
 }
+
 .produtos img{
     margin-top: 40px;
     height: 330px;
     margin-right: 30px;
     border-radius: 18px;
+    margin-right: 80px;
 }
 ::-webkit-scrollbar{
    
@@ -221,3 +225,38 @@ header{
 #radio4:checked ~ .navigation-auto .auto-bnt4{
     background-color: #fff;
 } 
+
+
+.produtos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-left: 62px;
+    margin-top: 35px;
+}
+
+.produto {
+    width: 330px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.produto img {
+    height: 330px;
+    width: 330px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-left: 80px;
+}
+
+.produto p {
+    margin: 5px 0 0 0;
+    font-family: "Poppins", sans-serif;
+    text-align:center;
+    font-size: 17px;
+}
+
+.preco{
+    font-weight: bold;
+}

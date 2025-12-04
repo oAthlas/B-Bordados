@@ -75,12 +75,19 @@
         
     </div>      
             <!-- arquivos de venda -->
+      
         <div class="produtos">
-        {% for product in products %}
-            <a href="{% url 'product_show' product.id %}"><img src="{{ product.image.url }}" alt="{{ product.name }}"></a>
-            <p>{{ product.name }}</p>
-            <p>R${{ product.price }}</p>
-        {% endfor %}
-        </div>
+    {% for product in products %}
+    <div class="produto">
+        <a href="{% url 'product_show' product.id %}">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        </a>
+
+        <p class="nome">{{ product.name }}</p>
+        <p class="preco">R${{ product.price }}</p>
+    </div>
+    {% endfor %}
+</div>
+
 </body>
 </html>
