@@ -12,7 +12,7 @@ header{
     position: fixed;
     margin-top: -140px;
     height: 100px;
-    box-shadow: 0 1px 5px 1px #dae2e2 ;
+    box-shadow: 0 1px 5px 1px #eae9e9 ;
     background-color: #f9f6ef;
     width:100%;
     overflow: hidden;
@@ -100,29 +100,32 @@ header{
 /* Texto, centro da página*/
 .texto{
     
-    margin-left: 63px;
-    margin-top: 90px;
-    font-family: "Poppins", sans-serif;
+    margin-left: 80px;
+    margin-top: 100px;
+    font-family: "montserrant","Poppins", sans-serif;
     font-size: 35px;
+    color: #282828;
+    margin-bottom: 30px;
 }
 /* botões de filtro*/
 .filtro{
-    margin-left: 62px;  
+    margin-left: 76px;  
 }
 .filtro button{  
     padding: 15px;
     margin-right: 25px;
     border-radius: 10px;
     border: none;
-    background-color: rgb(195, 194, 194);
+    background-color: #eae9e9;
     margin-top: -5px;
     cursor: pointer;
     width: 110px;
+    color: #282828;
 }
 
 .filtro button:hover{
-    background-color: #d7a611;
-    color: #e0e1e7;
+    background-color: #f1119b;
+    color: #f9f6ef;
 }
 /* Produtos*/
 .produtos{
@@ -140,7 +143,7 @@ header{
 }
 ::-webkit-scrollbar{
    
-    background-color: #eae9e9;
+    background-color: #f9f6ef;
     color: #f1119b;
 }
 
@@ -172,28 +175,28 @@ header{
 .manual-navigation{
     position: absolute;
     width: 1000px;
-    margin-top: -20px;
+    margin-top: 15px;
     display: flex;
     justify-content: center;
 
 }
 
 .manual-bnt{
-    border: 2px solid #4a5252;
+    border: 2px solid #282828;
     padding: 3px;
     border-radius: 10px;
     cursor: pointer;
     transition: 1s;
-    color: #4a5252;
+    color: #282828;
 
 }
 
 .manual-bnt:not(:last-child){
-    margin-right: 10px;
+    margin-right: 8px;
 }
 
 .manual-bnt:hover{
-    background-color: #fff;
+    background-color: #282828;
 }
 
 #radio1:checked ~ .first{
@@ -230,8 +233,8 @@ header{
 .produtos {
     display: flex;
     flex-wrap: wrap;
-    gap: 40px;
-    margin-left: 62px;
+    gap: 22px;
+    margin-left: 0px;
     margin-top: 35px;
 }
 
@@ -239,24 +242,35 @@ header{
     width: 330px; 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    
 }
 
 .produto img {
-    height: 330px;
-    width: 330px;
+    height: 87%;
+    width: 87%;
     object-fit: cover;
     border-radius: 16px;
-    margin-left: 80px;
+    margin-left: 75px;
+    margin-right: -10px;
+    align-items: center;
+    box-shadow: 1px 1px 3px 1px #eae9e9 ;
+    
 }
 
 .produto p {
     margin: 5px 0 0 0;
     font-family: "Poppins", sans-serif;
-    text-align:center;
-    font-size: 17px;
+    font-size: 15px;
+    margin-left: 85px;
+    color: #282828;
+    
 }
 
 .preco{
     font-weight: bold;
+    
+}
+
+.parcela{
+    
 }
