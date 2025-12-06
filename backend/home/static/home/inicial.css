@@ -33,7 +33,7 @@ header{
     align-items: center;
     padding-left: 15px;
     padding-right: 70px;
-    border-radius: 15px;
+    border-radius: 8px;
     border: none;
     font-size: 15px;
     text-decoration: none;
@@ -153,11 +153,13 @@ header{
     width: 1000px;
     height: 250px;
     overflow: hidden;
+    border-radius: 10px;
 }
 .slides{
     width: 400%;
     height: 250px;
     display: flex;
+    
 }
 .slides input{
     display: none;
@@ -165,11 +167,12 @@ header{
 .slide{
     width: 25%;
     position: relative;
+    transition: 1.4s;
 }
 
 .slide img {
     width: 1000px; 
-    border-radius: 10px;
+    
 }
 
 .manual-navigation{
@@ -212,22 +215,42 @@ header{
 #radio4:checked ~ .first{
     margin-left: -75% ;
 }
+
+.navigation-auto div{
+    border: 1px solid #282828;
+    padding:3px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+.navigation-auto{
+    position: absolute;
+    width: 1000px;
+    margin-top: 265.8px;
+    display: flex;
+    justify-content: center;
+    
+}
 .navigation-auto div:not(:last-child){
     margin-right: 40px;
+    margin-right: 9.85px;
 }
 
 #radio1:checked ~ .navigation-auto .auto-bnt1{
-    background-color: #fff;
+    background-color: #282828;
+    color: #282828;
 } 
 #radio2:checked ~ .navigation-auto .auto-bnt2{
-    background-color: #fff;
+    background-color: #282828;
+    color: #282828;
 } 
 #radio3:checked ~ .navigation-auto .auto-bnt3{
-    background-color: #fff;
+    background-color: #282828;
 } 
 #radio4:checked ~ .navigation-auto .auto-bnt4{
-    background-color: #fff;
+    background-color: #282828;
 } 
+
 
 
 .produtos {
@@ -271,6 +294,3 @@ header{
     
 }
 
-.parcela{
-    
-}
