@@ -13,12 +13,33 @@
     
         <a href="{% url 'home' %}"><img src="{% static 'home/logo_bbordados.svg' %}" alt="" class="logo"></a>
         <div class="direita"> 
-            <input type="text" name="pesquisar" id="pesquisar" placeholder="Pesquisar" class="pesquisa" >
-            <button class="lupa"><img src="https://img.icons8.com/?size=100&id=e4NkZ7kWAD7f&format=png&color=000000" alt="" class="lupaimg"></button> 
-            <img src="https://img.icons8.com/?size=100&id=59997&format=png&color=000000" alt="" style="padding-top: 7px;" width="40px"; height="37px"; class="carrinho" >
+            
+            <input type="text" 
+            name="pesquisar" 
+            id="pesquisar" 
+            placeholder="Pesquisar" 
+            class="pesquisa">
+
+            <button class="lupa">
+                <img src="https://img.icons8.com/?size=100&id=e4NkZ7kWAD7f&format=png&color=000000" 
+                alt="" 
+                class="lupaimg">
+            </button> 
+
+            <button>
+            <img src="https://img.icons8.com/?size=100&id=59997&format=png&color=000000" 
+            alt="" style="padding-top: 7px;" 
+            width="40px"; 
+            height="37px"; 
+            class="carrinho" >
+            </button>
+
             <div class="MenuHamburguer"> 
-            <img src="https://img.icons8.com/?size=100&id=8113&format=png&color=000000" alt=""  class="menu">
+            <img src="https://img.icons8.com/?size=100&id=8113&format=png&color=000000" 
+            alt=""  
+            class="menu">
             </div>
+
     </header>
 
 
@@ -31,16 +52,20 @@
             <input type="radio" name="radio-bnt" id="radio4">
             
             <div class="slide first">
-                <img src="https://blog.saninternet.com/wp-content/uploads/2017/11/san-banner-successo-1.jpg" alt="imagem 1"/>
+                <img src="https://blog.saninternet.com/wp-content/uploads/2017/11/san-banner-successo-1.jpg" 
+                alt="imagem 1"/>
             </div>
             <div class="slide">
-                <img src="https://blog.saninternet.com/wp-content/uploads/2017/11/san-banner-successo-2.jpg" alt="imagem 2"/>
+                <img src="https://blog.saninternet.com/wp-content/uploads/2017/11/san-banner-successo-2.jpg" 
+                alt="imagem 2"/>
             </div>
             <div class="slide">
-                <img src="https://blog.saninternet.com/wp-content/uploads/2017/11/san-banner-successo-6.jpg" alt="imagem 3"/>
+                <img src="https://blog.saninternet.com/wp-content/uploads/2017/11/san-banner-successo-6.jpg" 
+                alt="imagem 3"/>
             </div>
             <div class="slide">
-                <img src="https://blog.saninternet.com/wp-content/uploads/2017/11/san-banner-successo-3.jpg" alt="imagem 4"/>
+                <img src="https://blog.saninternet.com/wp-content/uploads/2017/11/san-banner-successo-3.jpg" 
+                alt="imagem 4"/>
             </div>
         
             <div class="navigation-auto">
@@ -88,6 +113,8 @@
         <p class="parcela"><strong>{{ product.installments_count }}</strong>X DE <strong>R${{ product.installments_value }}</strong></p>
     </div>
     {% endfor %}
+
+    <script src="{% static 'home/Script.js' %}"></script>
 </div>
 </body>
 </html>
