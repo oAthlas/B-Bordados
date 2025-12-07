@@ -12,7 +12,7 @@ header{
     position: fixed;
     margin-top: -140px;
     height: 100px;
-    box-shadow: 0 1px 5px 1px #eae9e9 ;
+    
     background-color: #f9f6ef;
     width:100%;
     overflow: hidden;
@@ -28,7 +28,7 @@ header{
 /* imput de pesquisa*/
 .pesquisa {
     display: flex;
-    margin-right: 0px;
+    margin-left: 55vh;
     width: 590px;
     align-items: center;
     padding-left: 15px;
@@ -40,61 +40,43 @@ header{
     text-transform: none;
     background-color:#eae9e9;
     height: 35px;
-    margin-top: 7px;
+    margin-top: -38px;
 }
 
 .lupaimg{
-    width: 20px;
+    
 }
 .lupa {
-    height: 35px;
-    width: 20px;
+    display: flex;
+    height: 25px;
+    width: 25px;
     border: none;
     cursor: pointer;
-    
     background-color:#eae9e9 ;
-    margin-left: -40px;
+    margin-left: 1050px;
     margin-right: 280px;
-    margin-top: 8px;
+    margin-top: -32px;
 }
 
-/* Menu Hamburguer*/
-.MenuHamburguer{
-    margin-top: 4px;
-    height: 31.5px;
-    margin-right: 10px;
-    background-color: #f9f6ef;
-    padding: 5px;
-    border-radius: 15px;
-    display: flex;
-    gap: 10px;
-}
 .menu{
     display: flex;
     width: 20px;
     height: 20px;
     padding-top: 5px;
     padding: 5px;
-    margin: none;
-    padding: none;
-    margin-top: 3px;
+    margin-top: -30px;
     cursor: pointer;
+    margin-left: 194vh;
 }
 /* Grupo Imput com Menu hamburguer*/
-.direita{
-    display: flex;
-   margin-top: 0;
-    height: 50px;
-    margin-left: 420px;
-    margin-top: -45px;
-}
+
 /* Carrinho de compras*/
 .carrinho{
     cursor: pointer;
     margin-right: 70px;
     height: 30px;
     width: 35px;
-    margin-top: 5px;
+    margin-top: 0;
 }
 
 /* Texto, centro da página*/
@@ -291,6 +273,91 @@ header{
 
 .preco{
     font-weight: bold;
+}
+
+#openmodal{
+    width: 45px;
+    background-color: #f9f6ef;
+    display: flex;
+    margin-left: 175vh;
+    margin-top: -34px;
+    border: none;
     
 }
 
+/* Fundo escuro atrás do modal */
+.modal {
+    display: none;              /* começa invisível */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .2);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    
+}
+
+/* Caixa do modal */
+.modal-content {
+    background: #f9f6ef;
+    width: 100%;
+    border-top-left-radius: 30px;
+    position: relative;
+    margin-left: 50%;
+    
+}
+
+/* Botão de fechar (X) */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.pop{
+    width: 90vh;
+    margin-left: 20px;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: #f1119b;
+    color: #eae9e9;
+    font-family: "montserrant","Poppins", sans-serif;
+    font-size: 15px;
+}
+
+.p-pop{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    font-size: 12px;
+    font-family: "montserrant","Poppins", sans-serif;
+}
+
+.value{
+    width: 100%;
+    height: 200px;
+    background-color: #eae9e9;
+    margin: 0;
+}
+
+.elder-ajeita{
+    margin-left: 20px;
+    padding-top: 35px ;
+    margin-bottom: 27px;
+    font-family: "montserrant","Poppins", sans-serif;
+    font-size: 15px;
+}
+
+.textopop{
+    margin-left: 20px;
+    font-family: "montserrant","Poppins", sans-serif;
+    font-size: 30px;
+}

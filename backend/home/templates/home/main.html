@@ -26,7 +26,7 @@
                 class="lupaimg">
             </button> 
 
-            <button>
+            <button id="openmodal">
             <img src="https://img.icons8.com/?size=100&id=59997&format=png&color=000000" 
             alt="" style="padding-top: 7px;" 
             width="40px"; 
@@ -114,7 +114,24 @@
     </div>
     {% endfor %}
 
-    <script src="{% static 'home/Script.js' %}"></script>
+    
 </div>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+
+        <h2 class="textopop">Meu Carrinho</h2>
+       
+            <div class="value">
+        <p class="elder-ajeita">Valor total -----------</p>
+        <button class="pop">Finalizar compra</button>
+        <p class="p-pop">produto digital,o download será liberado após o pagamento</p>
+            </div> 
+    </div>
+</div>
+
+<script src="{% static 'home/Script.js' %}"></script>
 </body>
 </html>
