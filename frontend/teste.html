@@ -4,12 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/frontend/Inicial/inicial2.css">
 </head>
 <body>
-    <div class="slides">
-            <input type="radio" name="radio-bnt" id="radio1">
-            <input type="radio" name="radio-bnt" id="radio2">
-            <input type="radio" name="radio-bnt" id="radio3">
-            <input type="radio" name="radio-bnt" id="radio4">
+<header class="cabeçario">
+    <a href="{% url 'home' %}">
+        <img src="/backend/home/static/home/logo_bbordados.svg" alt="" class="logo">
+    </a>
+        <input type="text" 
+        name="pesquisar" 
+        id="pesquisar" 
+        placeholder="Buscar por produtos" 
+        class="pesquisa">
+
+        <button class="lupa">
+            <img src="https://img.icons8.com/?size=100&id=e4NkZ7kWAD7f&format=png&color=000000" 
+            alt="" 
+            class="lupaimg">
+        </button>
+
+    <div class="direita">
+        <button id="openmodal">
+            <img src="https://img.icons8.com/?size=100&id=59997&format=png&color=000000"
+            alt=""
+            class="carrinho">
+        </button>
+
+        <img src="https://img.icons8.com/?size=100&id=8113&format=png&color=000000" 
+        alt=""  
+        class="menu">
+
+    </div>
+</header>
+
 </body>
 </html>
