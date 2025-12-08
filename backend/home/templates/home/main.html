@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
     {% load static %}
+    {% load cart_total %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B Bordados</title>
@@ -55,19 +56,14 @@
                 <img src="https://blog.saninternet.com/wp-content/uploads/2017/11/san-banner-successo-1.jpg" 
                 alt="imagem 1"/>
             </div>
+
+            {% for banner in banner %}
             <div class="slide">
-                <img src="https://blog.saninternet.com/wp-content/uploads/2017/11/san-banner-successo-2.jpg" 
-                alt="imagem 2"/>
+                <img src="{{ banner.image.url }}" 
+                alt="{{ banner.title }}"/>
             </div>
-            <div class="slide">
-                <img src="https://blog.saninternet.com/wp-content/uploads/2017/11/san-banner-successo-6.jpg" 
-                alt="imagem 3"/>
-            </div>
-            <div class="slide">
-                <img src="https://blog.saninternet.com/wp-content/uploads/2017/11/san-banner-successo-3.jpg" 
-                alt="imagem 4"/>
-            </div>
-        
+            {% endfor %}
+    
             <div class="navigation-auto">
                 <div class="auto-bnt1"></div>
                 <div class="auto-bnt2"></div>
@@ -119,19 +115,38 @@
 
 <!-- Modal -->
 <div class="modal" id="modal">
-    <div class="modal-content">
-        <span class="close" id="closeModal">&times;</span>
+    <div>
+        {% if user.is_authenticated %}
+            
+            <h2>Seu Carrinho</h2>
 
-        <h2 class="textopop">Meu Carrinho</h2>
-       
-            <div class="value">
-        <p class="elder-ajeita">Valor total -----------</p>
-        <button class="pop">Finalizar compra</button>
-        <p class="p-pop">produto digital,o download será liberado após o pagamento</p>
-            </div> 
+            {% if cart %}
+                <ul>
+                    {% for id, item in cart.items %}
+                        <li>
+                            <img src="{{ item.image }}" alt="{{ item.name }}">
+                            <div>
+                                <p>{{ item.name }}</p>
+                                <p>R$ {{ item.price|floatformat:2 }}</p>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <!-- Total -->
+                <p>Total: R$ {{ cart.values|cart_total|floatformat:2 }}</p>
+
+            {% else %}
+                <p>Seu carrinho está vazio.</p>
+            {% endif %}
+
+        {% else %}
+            <!-- Usuário NÃO logado -->
+            <p>Você precisa estar logado para usar o carrinho.</p>
+            <a href="{% url 'login' %}">Fazer Login</a>
+        {% endif %}
     </div>
 </div>
-
 <script src="{% static 'home/Script.js' %}"></script>
 </body>
 </html>
