@@ -33,6 +33,7 @@ def add_to_cart(request, id):
 
     cart[str(product.id)] = {
             'name': product.name,
+            'image': product.image.url,
             'price': float(product.price),
             'quantity': 1
             }

@@ -122,7 +122,7 @@
                 <ul>
                     {% for id, item in cart.items %}
                         <li>
-                            <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                            <img src="{{ item.image }}" alt="{{ item.name }}">
                             <div>
                                 <p>{{ item.name }}</p>
                                 <p>R$ {{ item.price|floatformat:2 }}</p>
@@ -146,6 +146,7 @@
         {% endif %}
     </div>
 </div>
+
 <script src="{% static 'home/Script.js' %}"></script>
 </body>
 </html>
