@@ -6,7 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B Bordados</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'home/inicial.css' %}">
+    
 </head>
 <body>
     <!-- Cabeçario da pagina em header -->
@@ -116,8 +118,10 @@
     <div class="modal-content">
         {% if user.is_authenticated %}
             
-            <h2 class="textopop">Meu Carrinho</h2>
-            <span class="close" id="closeModal">x</span>
+            <h2 class="textopop">Meu carrinho</h2>
+            <button class="close" id="closeModal">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
             {% if cart %}
                 <ul>
                     {% for id, item in cart.items %}
@@ -132,7 +136,12 @@
                 </ul>
             <div class="value">
                 <!-- Total -->
-                <p>Total: R$ {{ cart.values|cart_total|floatformat:2 }}</p>
+                 <div class="dinheiro">
+                <p class="elder-ajeita">Valor total: 
+                    </p>
+                <p class="valor">R$ {{ cart.values|cart_total|floatformat:2 }}
+                    </p>
+                 </div>
                 <button class="pop">Finalizar Compra</button>
                 <p class="p-pop">Produto Digital, o download será liberado após o pagamento</p>
             {% else %}
