@@ -113,16 +113,16 @@
 
 <!-- Modal -->
 <div class="modal" id="modal">
-    <div>
+    <div class="modal-content">
         {% if user.is_authenticated %}
             
-            <h2>Seu Carrinho</h2>
-
+            <h2 class="textopop">Meu Carrinho</h2>
+            <span class="close" id="closeModal">x</span>
             {% if cart %}
                 <ul>
                     {% for id, item in cart.items %}
                         <li>
-                            <img src="{{ item.image }}" alt="{{ item.name }}">
+                            <img src="{{ item.image.url }}" alt="{{ item.name }}">
                             <div>
                                 <p>{{ item.name }}</p>
                                 <p>R$ {{ item.price|floatformat:2 }}</p>
@@ -130,14 +130,15 @@
                         </li>
                     {% endfor %}
                 </ul>
-
+            <div class="value">
                 <!-- Total -->
                 <p>Total: R$ {{ cart.values|cart_total|floatformat:2 }}</p>
-
+                <button class="pop">Finalizar Compra</button>
+                <p class="p-pop">Produto Digital, o download será liberado após o pagamento</p>
             {% else %}
                 <p>Seu carrinho está vazio.</p>
             {% endif %}
-
+            </div>
         {% else %}
             <!-- Usuário NÃO logado -->
             <p>Você precisa estar logado para usar o carrinho.</p>
