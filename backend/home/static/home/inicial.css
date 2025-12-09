@@ -291,7 +291,6 @@ header {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    
 }
 
 /* Caixa do modal */
@@ -301,9 +300,7 @@ header {
     border-top-left-radius: 30px;
     position: relative;
     margin-left: 50%;
-    
 }
-
 /* Botão de fechar (X) */
 .close {
     position: absolute;
@@ -313,7 +310,6 @@ header {
     font-size: 22px;
     font-weight: bold;
 }
-
 .pop{
     width: 90vh;
     margin-left: 20px;
@@ -409,9 +405,7 @@ header {
         object-fit: cover;
         border-radius: 10px;
     }
-    .navigation-auto div{
-        
-    }
+    
     .manual-bnt{
         padding: 2px;
         
@@ -479,8 +473,32 @@ header {
         font-size: 18px;
         margin-left: 15px;
     }
+    /* ===== MODAL ===== */
+    .modal-content {
+        width: 60%;
+        margin-left: 40%;
+        
+        border-radius: 15px 0 0 0;
+        bottom: 0;
+        position: fixed;
+    }
 
+    .pop {
+        width: 90%;
+        justify-content: center;
+        display: flex;
+        padding: 12px;
+        margin-left:20px;
+    }
 
+    .value {
+        padding-bottom: 20px;
+    }
+
+    .close{
+        margin-right:25px;
+        margin-top: 15px;
+    }
 }
 
 /* MOBILE */
@@ -525,9 +543,7 @@ header {
         object-fit: cover;
         border-radius: 10px;
     }
-    .navigation-auto div{
-        
-    }
+    
     .manual-bnt{
         padding: 2px;
         
@@ -598,7 +614,34 @@ header {
         margin-left: 15px;
     }
 
+    /* ===== MODAL ===== */
+    .modal-content {
+        width: 100%;
+        margin: 0;
+        border-radius: 15px 0 0 0;
+        bottom: 0;
+        position: fixed;
+    }
+
+    .pop {
+        width: 90%;
+        justify-content: center;
+        display: flex;
+        padding: 12px;
+       margin-left: 25px;
+    }
+    
+
+    .value {
+        padding-bottom: 20px;
+    }
+
+    .close{
+        margin-right:21px;
+        margin-top: 20px;
+    }
 }
+
 
 /* TELAS MUITO PEQUENAS */
 @media (max-width: 480px) {
@@ -651,9 +694,7 @@ header {
         object-fit: cover;
         border-radius: 10px;
     }
-    .navigation-auto div{
-        
-    }
+    
     .manual-bnt{
         padding: 2px;
         
@@ -728,19 +769,26 @@ header {
     .modal-content {
         width: 100%;
         margin: 0;
-        border-radius: 15px 15px 0 0;
+        border-radius: 15px 0 0 0;
         bottom: 0;
         position: fixed;
     }
 
     .pop {
         width: 90%;
-        margin: 20px auto;
+        justify-content: center;
+        display: flex;
         padding: 12px;
+        margin-left:15px;
     }
 
     .value {
         padding-bottom: 20px;
+    }
+
+    .close{
+        margin-right:16px;
+        margin-top: 15px;
     }
 }
 
