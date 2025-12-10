@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from products.models import Product
+from home.models import banners
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -7,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     sort = request.GET.get('sort', None)
     products = Product.objects.all()
+    banners_list = banners.objects.all()
 
     if sort == "price_asc":
         products = products.order_by('price')
@@ -21,7 +23,10 @@ def home(request):
     elif sort == "name_desc":
         products = products.order_by('-name')
 
-    return render(request, 'home/main.html', {'products': products})
+    return render(request, 'home/main.html', {
+        'products': products,
+        'banners': banners_list
+        })
 
 def product_show(request, id):
     productshow = get_object_or_404(Product, id=id)
@@ -41,7 +46,3 @@ def add_to_cart(request, id):
     request.session['cart'] = cart
     request.session.modified = True
     return redirect('home')
-
-def banners(request, id=id):
-    banner = get_object_or_404(banners, id=id)
-    return render(request, 'home/main.html', {'banner': banner})
