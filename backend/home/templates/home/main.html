@@ -108,6 +108,9 @@
         <p class="preco">R${{ product.price }}</p>
         <p class="parcela"><strong>{{ product.installments_count }}</strong>X DE <strong>R${{ product.installments_value }}</strong></p>
     </div>
+    
+        <!-- Total -->
+         
     {% endfor %}
 
     
@@ -123,35 +126,51 @@
               <i class="fa-solid fa-xmark"></i>
             </button>
             {% if cart %}
-                <ul>
-                    {% for id, item in cart.items %}
-                        <li>
-                            <img src="{{ item.image }}" alt="{{ item.name }}">
-                            <div>
-                                <p>{{ item.name }}</p>
-                                <p>R$ {{ item.price|floatformat:2 }}</p>
-                            </div>
-                        </li>
-                    {% endfor %}
-                </ul>
-            <div class="value">
-                <!-- Total -->
-                 <div class="dinheiro">
-                <p class="elder-ajeita">Valor total: 
-                    </p>
-                <p class="valor">R$ {{ cart.values|cart_total|floatformat:2 }}
-                    </p>
-                 </div>
-                <button class="pop">Finalizar Compra</button>
-                <p class="p-pop">Produto Digital, o download será liberado após o pagamento</p>
-            {% else %}
-                <p>Seu carrinho está vazio.</p>
-            {% endif %}
-            </div>
+<div class="ccompras">
+
+    {% for id, item in cart.items %}
+    <div class="iitem-carrinho">
+        <img src="{{ item.image }}" alt="{{ item.name }}" class="iimgcarrinho">
+        
+        <div class="iinfo">
+            <p class="nnome">{{ item.name }}</p>
+            <p class="ppreco">R${{ item.price|floatformat:2 }}</p>
+        </div>
+    </div>
+        
+    {% endfor %}
+
+</div>
+    <div class="value">
+                
+    <div class="dinheiro">
+    <p class="elder-ajeita">Valor total: 
+    </p>
+    <p class="valor">R$ {{ cart.values|cart_total|floatformat:2 }}
+    </p>
+        </div>
+        <button class="pop">Finalizar Compra</button>
+        <p class="p-pop">Produto Digital, o download será liberado após o pagamento</p>
+        </div>
+{% endif %}
+
         {% else %}
             <!-- Usuário NÃO logado -->
-            <p>Você precisa estar logado para usar o carrinho.</p>
-            <a href="{% url 'login' %}">Fazer Login</a>
+             <h2 class="textopop">Meu carrinho</h2>
+        <div class="falta-de-conta">
+            
+            <button class="close" id="closeModal">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img src="https://img.icons8.com/?size=100&id=QqnSXlf4UA4q&format=png&color=FFFFFF" alt=":/">
+            <p class="ausente">Acho que... algo deu errado no seu carrinho...</p>
+            <p class="ausente2">Ja tentou entrar em alguma conta?</p>
+        </div>
+        <div class="links">
+            <a href="{% url 'login' %}" class="Fazer-login" >Entar em sua conta</a>
+            <p>/</p>
+            <a href="{% url 'register' %}" class="Fazer-login" >Criar sua conta</a>
+        </div> 
         {% endif %}
     </div>
 </div>

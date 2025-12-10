@@ -340,7 +340,10 @@ header {
     height: 200px;
     background-color: #eae9e9;
     margin: 0;
-    margin-top: 50%;
+    margin-top: 20%;
+    display: flex;
+    flex-direction: column ;
+    z-index: 1000;
     
 }
 .dinheiro{
@@ -365,6 +368,74 @@ header {
     margin-left: 5%;
     font-family: "montserrant","Poppins", sans-serif;
     font-size: 30px;
+}
+
+.falta-de-conta{
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    margin-top: 50%;
+}
+.ausente{
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3px;
+}
+.ausente2{
+    margin-top: 0;
+}
+.Fazer-login{
+   
+    text-decoration: none;
+    color: #f1119b;
+}
+
+.links{
+    width: 100%;
+    display: flex;
+    margin-left: 0;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.iitem-carrinho {
+    display: flex;
+    align-items: flex-start;     /* centraliza imagem e texto */
+    gap: 15px;               /* espaço entre imagem e textos */
+}
+
+.iimgcarrinho {
+    width: 150px;
+    height:150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-left: 5%;
+    margin-bottom: 15px;
+}
+
+.iinfo {
+    display: flex;
+    flex-direction: column;  /* nome em cima, preço embaixo */
+    justify-content: flex-start;
+    gap: 4px;
+    padding-top: 0;
+    margin-top: 0;
+
+}
+
+.nnome {
+    
+    padding: 0;
+    margin-top:10px ;
+    margin-bottom: 5px;
+}
+
+.ppreco {
+    font-size: 14px;
+    color: #282828;
+    margin-top: 0;
 }
 
 /* ====== MEDIA QUERIES ====== */
@@ -806,5 +877,6 @@ header {
         margin-top: 15px;
     }
 }
+
 
 
