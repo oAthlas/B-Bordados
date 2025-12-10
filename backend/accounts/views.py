@@ -14,9 +14,17 @@ def register(request):
         if password != confirm_password:
             messages.error(request, "As senhas não coincidem.")
             return render(request, 'accounts/register.html')
-
+        
         if User.objects.filter(username=username).exists():
             messages.error(request, "Nome de usuário já existe.")
+            return render(request, 'accounts/register.html')
+        
+        if username == "" or password == "":
+            messages.error(request, "Nome de usuário e senha não podem ser vazios.")
+            return render(request, 'accounts/register.html')
+        
+        if len(password) < 6:
+            messages.error(request, "A senha deve ter pelo menos 6 caracteres.")
             return render(request, 'accounts/register.html')
 
         user = User.objects.create_user(
@@ -36,15 +44,16 @@ def login_view(request):
 
         user = authenticate(request, username=username, password=password)
 
+        if username == "" or password == "":
+            messages.error(request, "Por favor, forneça um nome de usuário e uma senha.")
+            return render(request, 'accounts/login.html')
+
         if user is not None:
             auth_login(request, user)
-            return redirect('profile')  # Redirect to a success page.
+            return redirect('main')
         else:
-            messages.error(request, 'Usuário ou senha incorretos.')
+            messages.error(request, 'Usuário ou senha incorretos ou inexistentes.')
             return redirect('login')
-    
+        
     return render(request, 'accounts/login.html')
-
-def profile(request):
-    return render(request, 'accounts/profile.html')
 
