@@ -80,8 +80,11 @@ header {
 
 /* MENU */
 .menu {
-    width: 20px;
+    width: 35px;
     cursor: pointer;
+    border-radius: 20px;
+    padding: 0  ;
+    box-shadow: 1px 1px 4px #ccc;   
 }
 
 /* Texto, centro da página*/
@@ -295,11 +298,12 @@ header {
 /* Caixa do modal */
 .modal-content {
     background: #f9f6ef;
-    width: 100%;
+    width: 40%;
     border-top-left-radius: 30px;
-    position: relative;
-    margin-left: 50%;
+    position:relative;
+    margin-left: 65%;
     height: 100%;
+    overflow-y: scroll;
 }
 /* Botão de fechar (X) */
 .close {
@@ -324,6 +328,7 @@ header {
     color: #eae9e9;
     font-family: "montserrant","Poppins", sans-serif;
     font-size: 15px;
+    cursor: pointer;
 }
 
 .p-pop{
@@ -340,10 +345,10 @@ header {
     height: 200px;
     background-color: #eae9e9;
     margin: 0;
-    margin-top: 20%;
+    margin-top: 30px;
     display: flex;
     flex-direction: column ;
-    z-index: 1000;
+    z-index: 1100;
     
 }
 .dinheiro{
@@ -374,7 +379,7 @@ header {
     justify-content: center;
     align-items: center;
     justify-items: center;
-    margin-top: 50%;
+    margin-top: -10%;
 }
 .ausente{
     justify-content: center;
@@ -413,6 +418,8 @@ header {
     border-radius: 10px;
     margin-left: 5%;
     margin-bottom: 15px;
+    box-shadow: 1px 1px 4px #ccc;
+
 }
 
 .iinfo {
@@ -471,9 +478,11 @@ header {
     }
 
     .menu{
-        height: 15px;
-        width: 15px;
+        height: 35px;
+        width: 35px;
         margin-right: 30px;
+        border-radius: 20px;
+        padding: 0;
     }
 
      /* ===== SLIDER ===== */
@@ -561,9 +570,8 @@ header {
     }
     /* ===== MODAL ===== */
     .modal-content {
-        width: 60%;
-        margin-left: 40%;
-        
+        width: 40%;
+        margin-left: 60%;
         border-radius: 15px 0 0 0;
         bottom: 0;
         position: fixed;
@@ -726,6 +734,12 @@ header {
         margin-right:21px;
         margin-top: 20px;
     }
+
+    .menu{
+        width: 35px;
+        height: 35px;
+        
+    }
 }
 
 
@@ -875,6 +889,10 @@ header {
     .close{
         margin-right:16px;
         margin-top: 15px;
+    }
+    .menu{
+        width: 25px;
+        height: 25px;
     }
 }
 
