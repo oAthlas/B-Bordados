@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     {% load static %}
-    {% load cart_total %}
+    {% load cart_filter %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B Bordados</title>
@@ -135,6 +135,7 @@
         <div class="iinfo">
             <p class="nnome">{{ item.name }}</p>
             <p class="ppreco">R${{ item.price|floatformat:2 }}</p>
+            <a href="{% url 'remove_from_cart' id %}">Remover</a>
         </div>
     </div>
         

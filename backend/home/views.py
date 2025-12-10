@@ -46,3 +46,15 @@ def add_to_cart(request, id):
     request.session['cart'] = cart
     request.session.modified = True
     return redirect('home')
+
+def remove_from_cart(request, id):
+    cart = request.session.get('cart', {})
+
+    id = str(id)
+    if id in cart:
+        del cart[id]
+    
+    request.session['cart'] = cart
+    request.session.modified = True
+
+    return redirect('home')
