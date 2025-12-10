@@ -135,7 +135,7 @@
         <div class="iinfo">
             <p class="nnome">{{ item.name }}</p>
             <p class="ppreco">R${{ item.price|floatformat:2 }}</p>
-            <a href="{% url 'remove_from_cart' id %}">Remover</a>
+            <a href="{% url 'remove_from_cart' id %}" class="remove">Remover</a>
         </div>
     </div>
         
@@ -162,7 +162,7 @@
             style=
             "width:400px;
             margin-left: 180px;">
-            
+
         <div class="falta-de-conta">
             
             <button class="close" id="closeModal">
