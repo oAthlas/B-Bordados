@@ -139,8 +139,8 @@ header {
 .slider{
     margin: auto;
     margin-top: 140px;
-    width: 1000px;
-    height: 250px;
+    width: 1108px;
+    height: 182px;
     overflow: hidden;
     border-radius: 10px;
 }
@@ -160,8 +160,8 @@ header {
 }
 
 .slide img {
-    width: 1000px; 
-    
+    width: 1108px;
+    height: 182px;
 }
 
 .manual-navigation{
@@ -342,10 +342,10 @@ header {
 
 .value{
     width: 100%;
-    height: 200px;
-    background-color: #eae9e9;
+    height: 230px;
+    background-color: #f9f6ef;
     margin: 0;
-    margin-top: 30px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column ;
     z-index: 1100;
@@ -353,7 +353,7 @@ header {
 }
 .dinheiro{
     margin-bottom: 10px;
-    padding-top: 35px ;
+    padding-top: 0 ;
     font-family: "montserrant","Poppins", sans-serif;
     font-size: 15px;
     display: flex;
@@ -443,6 +443,12 @@ header {
     font-size: 14px;
     color: #282828;
     margin-top: 0;
+}
+
+.remove{
+    text-decoration: none;
+    color: #f1119b;
+    margin-top:45px ;
 }
 
 /* ====== MEDIA QUERIES ====== */
