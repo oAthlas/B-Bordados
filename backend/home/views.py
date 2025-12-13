@@ -30,7 +30,8 @@ def home(request):
 
 def product_show(request, id):
     productshow = get_object_or_404(Product, id=id)
-    return render(request, 'home/product_show.html', {'product': productshow})
+    products = Product.objects.all()
+    return render(request, 'home/product.html', {'product': productshow, 'products': products,})
 
 def add_to_cart(request, id):
     product = get_object_or_404(Product, id=id)
@@ -58,3 +59,4 @@ def remove_from_cart(request, id):
     request.session.modified = True
 
     return redirect('home')
+

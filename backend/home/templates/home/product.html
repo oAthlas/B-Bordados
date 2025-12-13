@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    {% load cart_filter %}
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'home/inicial2.css' %}">
 </head>
@@ -43,7 +45,7 @@
 
     <main class="produto-container">
         <div class="imagem">
-            <img src="/backend/media/products/1.png" alt="">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
         </div>
 
 <!-- INFORMAÇÕES -->
@@ -77,7 +79,7 @@
 <div class="produtos">
     {% for product in products %}
     <div class="produto">
-        <a href="{% url 'product_show' product.id %}">
+        <a href="{% url 'product' product.id %}">
             <img src="{{ product.image.url }}" alt="{{ product.name }}">
         </a>
 
@@ -159,9 +161,6 @@
 </div>
 
 <script src="{% static 'home/Script.js' %}"></script>
-
-
-
 
 </body>
 </html>
