@@ -16,19 +16,20 @@ function nextImage(){
 }
 
 
-
 const modal = document.getElementById("modal");
 const openBtn = document.getElementById("openmodal");
 const closeBtn = document.getElementById("closeModal");
 
 openBtn.onclick = () => {
-    modal.style.display = "flex";
-}
+    modal.classList.add("ativo");
+};
 
 closeBtn.onclick = () => {
-    modal.style.display = "none";
-}
+    modal.classList.remove("ativo");
+};
 
-window.onclick = (e) => {
-    if (e.target === modal) modal.style.display = "none";
-}
+modal.onclick = (e) => {
+    if (e.target === modal) {
+        modal.classList.remove("ativo");
+    }
+};
