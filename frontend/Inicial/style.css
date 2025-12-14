@@ -1,0 +1,189 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #f9f6ef;
+  color: #1e1e1e;
+}
+
+/* ===== LAYOUT ===== */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  padding: 0  0  0 70px;
+  min-height: 100vh;
+}
+
+/* ===== ESQUERDA ===== */
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  margin-top: 30px;
+}
+
+.left h1 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.products {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.product {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 15px;
+  align-items: center;
+}
+
+.product-img {
+  width: 90px;
+  height: 90px;
+  background: #e5e5e5;
+  border-radius: 10px;
+}
+
+.product-info h3 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.product-info span {
+  display: block;
+  margin: 5px 0;
+  font-weight: 500;
+}
+
+.product-info small {
+  font-size: 12px;
+  color: #666;
+}
+
+.back {
+  margin-top: 30px;
+  display: inline-block;
+  text-decoration: none;
+  color: #1e1e1e;
+  font-size: 14px;
+}
+
+/* ===== DIREITA ===== */
+.right {
+  background: #ececec;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 0;
+}
+
+.payment-box {
+  border: 1px solid #999;
+  border-radius: 20px;
+  padding: 45px 65px ;
+  height: 82%;
+}
+
+.payment-methods {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.payment-methods button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #d9d9d9;
+  font-weight: 500;
+}
+
+.payment-methods .active {
+  background: #f0129b;
+  color: #fff;
+}
+
+.card-type {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.card-type label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.card-type input{
+    margin-top: 15px;
+}
+
+.payment-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #999;
+  background: #f2f2f2;
+  
+}
+
+.row {
+  display: flex;
+  gap: 15px;
+}
+
+.summary {
+  margin: 25px 0;
+}
+
+.summary .line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.summary .total {
+  font-weight: 700;
+}
+
+.finish {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  background: #f0129b;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}
