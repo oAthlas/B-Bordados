@@ -1,0 +1,134 @@
+/* Container geral */
+.perfil-container {
+    background: #f9f6ef;
+    padding: 50px 70px;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Título */
+.perfil-container h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+/* Estrutura */
+.perfil-box {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    column-gap: 40px;
+}
+
+/* Avatar */
+.perfil-esquerda {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    background: #e6e6e6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.btn-foto {
+    background: #ff1493;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 18px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.info-foto {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #777;
+}
+
+/* Form */
+.perfil-form {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+/* Linhas */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Labels */
+.perfil-form label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* Inputs */
+.perfil-form input[type="text"],
+.perfil-form input[type="email"] {
+    width: 100%;
+    height: 42px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 0 12px;
+    font-size: 14px;
+}
+
+/* Data nascimento */
+.data-nascimento {
+    display: flex;
+    flex-direction: column;
+}
+
+.data-inputs {
+    display: flex;
+    gap: 12px;
+}
+
+.data-inputs input {
+    width: 70px;
+    height: 42px;
+    text-align: center;
+}
+
+/* Linha final (data + botão) */
+.linha-final {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+/* Botão salvar */
+.btn-salvar {
+    background: #ff1493;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    height: 42px;
+    padding: 0 32px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Sexo */
+.sexo {
+    display: flex;
+    gap: 25px;
+    font-size: 14px;
+}
+
+.sexo input {
+    margin-right: 6px;
+}
