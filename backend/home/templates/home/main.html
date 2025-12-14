@@ -1,52 +1,12 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    {% load static %}
-    {% load cart_filter %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B Bordados</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'home/inicial.css' %}">
-    
-</head>
-<body>
-    <!-- Cabeçario da pagina em header -->
-    <header class="cabeçario">
-    
-        <a href="{% url 'home' %}"><img src="{% static 'home/logo_bbordados.svg' %}" alt="" class="logo"></a>
-         
-            
-            <input type="text" 
-            name="pesquisar" 
-            id="pesquisar" 
-            placeholder="Pesquisar" 
-            class="pesquisa">
+{% extends 'home/base.html' %}
 
-            <button class="lupa">
-                <img src="https://img.icons8.com/?size=100&id=e4NkZ7kWAD7f&format=png&color=000000" 
-                alt="" 
-                class="lupaimg">
-            </button> 
-    <div class="direita">
-            <button id="openmodal">
-            <img src="https://img.icons8.com/?size=100&id=59997&format=png&color=000000" 
-            alt="" style="padding-top: 7px;" 
-            width="40px"; 
-            height="37px"; 
-            class="carrinho" >
-            </button>
+{% block title %}B Bordados - Home{% endblock %}
 
-           
-            <img src="https://imgs.search.brave.com/v4EB8iUioHcFOuYmSShvRUO3-8NOWJsBIFFgO-M1rM0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtcHJlbWl1/bS9waW5ndWltLWRl/LWh1bWJvbGR0LXNw/aGVuaXNjdXMtaHVt/Ym9sZHRpLWVtLXBl/XzE5MTk3MS0xMzcx/OS5qcGc_c2VtdD1h/aXNfaHlicmlkJnc9/NzQwJnE9ODA" 
-            alt=""  
-            class="menu">
-            </div>  
+{% load static %}
+{% load cart_filter %}
 
-    </header>
-
-
-    <div class="slider">
+{% block content %}
+<div class="slider">
 
         <div class="slides">
             <input type="radio" name="radio-bnt" id="radio1">
@@ -113,74 +73,6 @@
          
     {% endfor %}
 
-    
-</div>
-
-<!-- Modal -->
-<div class="modal" id="modal">
-    <div class="modal-content">
-        {% if user.is_authenticated %}
-            
-            <h2 class="textopop">Meu carrinho</h2>
-            <button class="close" id="closeModal">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-            {% if cart %}
-<div class="ccompras">
-
-    {% for id, item in cart.items %}
-    <div class="iitem-carrinho">
-        <img src="{{ item.image }}" alt="{{ item.name }}" class="iimgcarrinho">
-        
-        <div class="iinfo">
-            <p class="nnome">{{ item.name }}</p>
-            <p class="ppreco">R${{ item.price|floatformat:2 }}</p>
-            <a href="{% url 'remove_from_cart' id %}" class="remove">Remover</a>
-        </div>
-    </div>
-        
-    {% endfor %}
-
-</div>
-    <div class="value">
-                
-    <div class="dinheiro">
-    <p class="elder-ajeita">Valor total: 
-    </p>
-    <p class="valor">R$ {{ cart.values|cart_total|floatformat:2 }}
-    </p>
-        </div>
-        <button class="pop">Finalizar Compra</button>
-        <p class="p-pop">Produto Digital, o download será liberado após o pagamento</p>
-        </div>
-{% endif %}
-
-        {% else %}
-            <!-- Usuário NÃO logado -->
-             <h2 class="textopop">Meu carrinho</h2>
-             <img src= "{% static 'home/content.png' %}" alt=":/" 
-            style=
-            "width:400px;
-            margin-left: 180px;">
-
-        <div class="falta-de-conta">
-            
-            <button class="close" id="closeModal">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-            
-            <p class="ausente">Acho que... algo deu errado no seu carrinho...</p>
-            <p class="ausente2">Ja tentou entrar em alguma conta?</p>
-        </div>
-        <div class="links">
-            <a href="{% url 'login' %}" class="Fazer-login" >Entar em sua conta</a>
-            <p>/</p>
-            <a href="{% url 'register' %}" class="Fazer-login" >Criar sua conta</a>
-        </div> 
-        {% endif %}
-    </div>
-</div>
-
 <script src="{% static 'home/Script.js' %}"></script>
-</body>
-</html>
+</div>
+{% endblock %}
