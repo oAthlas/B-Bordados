@@ -1,101 +1,13 @@
-/* ====== HEADER ====== */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100px;
-    width: 100%;
-    background-color: #f9f6ef;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    padding: 0 25px;
-    box-shadow: 0 1px 10px rgba(0,0,0,0.05);
-}
-
-/* LOGO */
-.logo {
-    width: 230px;
-    justify-content: end;
-    margin-left: 45px;
-    margin-right: 120px;
-}
-
-/* GRUPO DA DIREITA (input, lupa, carrinho, menu) */
-.direita {
-    display: flex;
-    align-items: center;
-    gap: 140px;
-}
-
-/* INPUT */
-.pesquisa {
-    width: 600px;
-    height: 40px;
-    padding: 0 15px;
-    border-radius: 8px 0 0 8px;
-    border: none;
-    background: #eae9e9;
-    font-size: 15px;
-}
-
-.lupa {
-    border: none;
-    background: #eae9e9;
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    border-radius: 0 8px 8px 0;
-    margin-right: 190px;
-}
-
-.lupa img {
-    width: 20px;
-}
-
-/* BOTÃO CARRINHO */
-#openmodal {
-    border: none;
-    background: none;
-    cursor: pointer;
-}
-
-.carrinho {
-    width: 32px;
-    
-}
-
-/* MENU */
-.menu {
-    width: 35px;
-    cursor: pointer;
-    border-radius: 20px;
-    padding: 0  ;
-    box-shadow: 1px 1px 4px #ccc;   
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-body {
-  background-color: #f9f6ef;
-  padding: 60px;
-}
+/* Product page styles only — header rules removed to avoid conflicts
+   Header, body and global rules are handled centrally in header.css / inicial.css
+*/
 
 /* CONTAINER PRINCIPAL */
 .produto-container {
   display: flex;
   gap: 80px;
   margin: 0 auto;
-  margin-top: 120px;
+  margin-top: 20px;
 }
 
 /* IMAGEM */
