@@ -20,16 +20,12 @@ const modal = document.getElementById("modal");
 const openBtn = document.getElementById("openmodal");
 const closeBtn = document.getElementById("closeModal");
 
-openBtn.onclick = () => {
-    modal.classList.add("ativo");
-};
+    if (!openBtn || !modal || !closeBtn) return;
 
-closeBtn.onclick = () => {
-    modal.classList.remove("ativo");
-};
+        openBtn.addEventListener("click", () => {
+        modal.classList.add("ativo");
+        });
 
-modal.onclick = (e) => {
-    if (e.target === modal) {
+    closeBtn.addEventListener("click", () => {
         modal.classList.remove("ativo");
-    }
-};
+        });

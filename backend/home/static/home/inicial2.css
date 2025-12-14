@@ -82,6 +82,8 @@ select {
   font-weight: 500;
   cursor: pointer;
   transition: 0.3s;
+  text-align: center;
+  text-decoration: none;
 }
 
 .btn-carrinho:hover {

@@ -68,11 +68,6 @@
         <p class="preco">R${{ product.price }}</p>
         <p class="parcela"><strong>{{ product.installments_count }}</strong>X DE <strong>R${{ product.installments_value }}</strong></p>
     </div>
-    
-        <!-- Total -->
-         
     {% endfor %}
-
-<script src="{% static 'home/Script.js' %}"></script>
 </div>
 {% endblock %}

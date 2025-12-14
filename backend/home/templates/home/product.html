@@ -12,10 +12,9 @@
         </div>
 
     <div class="produto-info">
-    <h1 class="produto-nome">Nome do produto</h1>
-
-    <p class="produto-preco">R$ 00,00</p>
-    <p class="parcelamento">Até 10x sem juros</p>
+    <h1 class="produto-nome">{{ product.name }}</h1>
+    <p class="produto-preco">R$ {{ product.price }}</p>
+    <p class="parcelamento">Até {{ product.installments_count }}x de R$ {{ product.installments_value }}</p>
 
     <hr>
 
@@ -26,8 +25,7 @@
       <option>JPEG</option>
     </select>
 
-    <button class="btn-carrinho">Adicionar ao carrinho</button>
-
+    <a class="btn-carrinho" href="{% url 'add_to_cart' product.id %}">Adicionar ao carrinho</a>
     <p class="aviso">
       Produto digital, o download será liberado após o pagamento
     </p>
@@ -49,11 +47,6 @@
         <p class="preco">R${{ product.price }}</p>
         <p class="parcela"><strong>{{ product.installments_count }}</strong>X DE <strong>R${{ product.installments_value }}</strong></p>
     </div>
-    
-        <!-- Total -->
-         
     {% endfor %}
-
-    
 </div>
 {% endblock %}
