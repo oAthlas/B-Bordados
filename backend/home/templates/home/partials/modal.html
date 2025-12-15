@@ -1,6 +1,5 @@
 <div class="modal" id="modal">
     {% load static %}
-    {% load cart_filter %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'home/inicial.css' %}">
 
@@ -12,13 +11,13 @@
             </button>
 
                 <div class="ccompras">
-                    {% for id, item in cart.items %}
+                    {% for item in cart.items.all %}
                         <div class="iitem-carrinho">
-                            <img src="{{ item.image }}" alt="{{ item.name }}" class="iimgcarrinho">
+                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="iimgcarrinho">
                             <div class="iinfo">
-                                <p class="nnome">{{ item.name }}</p>
-                                <p class="ppreco">R${{ item.price|floatformat:2 }}</p>
-                                <a href="{% url 'remove_from_cart' id %}" class="remove">Remover</a>
+                                <p class="nnome">{{ item.product.name }}</p>
+                                <p class="ppreco">R${{ item.product.price|floatformat:2 }}</p>
+                                <a href="{% url 'remove_from_cart' item.id %}" class="remove">Remover</a>
                             </div>
                         </div>
                     {% empty %}
@@ -26,11 +25,11 @@
                     {% endfor %}
                 </div>
 
-                {% if cart %}
+                {% if cart.items.all %}
                     <div class="value">
                         <div class="dinheiro">
                             <p class="elder-ajeita">Valor total:</p>
-                            <p class="valor">R$ {{ cart.values|cart_total|floatformat:2 }}</p>
+                            <p class="valor">R$ {{ cart.total|floatformat:2 }}</p>
                         </div>
                         <button class="pop">Finalizar Compra</button>
                         <p class="p-pop">Produto Digital, o download será liberado após o pagamento</p>

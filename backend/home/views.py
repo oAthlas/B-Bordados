@@ -1,7 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from products.models import Product
-from home.models import banners
 from django.contrib.auth.decorators import login_required
+
+from django.db import IntegrityError
+from django.contrib import messages
+
+from products.models import Product
+from home.models import CartItem, banners
+
 
 # Create your views here.
 
@@ -33,30 +38,32 @@ def product_show(request, id):
     products = Product.objects.all()
     return render(request, 'home/product.html', {'product': productshow, 'products': products,})
 
-def add_to_cart(request, id):
-    product = get_object_or_404(Product, id=id)
-    cart = request.session.get('cart', {})
+@login_required
+def add_to_cart(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    cart = request.user.cart
 
-    cart[str(product.id)] = {
-            'name': product.name,
-            'image': product.image.url,
-            'price': float(product.price),
-            'quantity': 1
-            }
+    try:
+        CartItem.objects.create(cart=cart, product=product)
+        messages.info(request, "Produto adicionado ao carrinho.")
 
-    request.session['cart'] = cart
-    request.session.modified = True
-    return redirect('home')
-
-def remove_from_cart(request, id):
-    cart = request.session.get('cart', {})
-
-    id = str(id)
-    if id in cart:
-        del cart[id]
-    
-    request.session['cart'] = cart
-    request.session.modified = True
+    except IntegrityError:
+        messages.warning(request, "O produto já está no carrinho.")
 
     return redirect('home')
 
+
+@login_required
+def remove_from_cart(request, item_id):
+    cart  = request.user.cart
+
+    cart_item = get_object_or_404(
+        CartItem, 
+        cart=request.user.cart, 
+        id=item_id
+    )
+
+    cart_item.delete()
+    messages.info(request, "Produto removido do carrinho.")
+
+    return redirect('home')
