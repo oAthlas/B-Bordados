@@ -6,6 +6,14 @@
     <title>{% block title %}B Bordados{% endblock %}</title>
     {% load static %}
 </head>
+{% if messages %}
+    <script>
+        {% for message in messages %}
+            alert("{{ message }}");
+        {% endfor %}
+    </script>
+{% endif %}
+
 <body>
     {% include 'home/partials/header.html' %}
     {% include 'home/partials/modal.html' %}

@@ -1,68 +1,58 @@
 <div class="modal" id="modal">
-{% load static %}
-{% load cart_filter %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="{% static 'home/inicial.css' %}">
+    {% load static %}
+    {% load cart_filter %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'home/inicial.css' %}">
 
     <div class="modal-content">
         {% if user.is_authenticated %}
-            
             <h2 class="textopop">Meu carrinho</h2>
             <button class="close" id="closeModal">
-              <i class="fa-solid fa-xmark"></i>
+                <i class="fa-solid fa-xmark"></i>
             </button>
-            {% if cart %}
-<div class="ccompras">
 
-    {% for id, item in cart.items %}
-    <div class="iitem-carrinho">
-        <img src="{{ item.image }}" alt="{{ item.name }}" class="iimgcarrinho">
-        
-        <div class="iinfo">
-            <p class="nnome">{{ item.name }}</p>
-            <p class="ppreco">R${{ item.price|floatformat:2 }}</p>
-            <a href="{% url 'remove_from_cart' id %}" class="remove">Remover</a>
-        </div>
-    </div>
-        
-    {% endfor %}
+                <div class="ccompras">
+                    {% for id, item in cart.items %}
+                        <div class="iitem-carrinho">
+                            <img src="{{ item.image }}" alt="{{ item.name }}" class="iimgcarrinho">
+                            <div class="iinfo">
+                                <p class="nnome">{{ item.name }}</p>
+                                <p class="ppreco">R${{ item.price|floatformat:2 }}</p>
+                                <a href="{% url 'remove_from_cart' id %}" class="remove">Remover</a>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p class="ausente">Seu carrinho está vazio.</p>
+                    {% endfor %}
+                </div>
 
-</div>
-    <div class="value">
-                
-    <div class="dinheiro">
-    <p class="elder-ajeita">Valor total: 
-    </p>
-    <p class="valor">R$ {{ cart.values|cart_total|floatformat:2 }}
-    </p>
-        </div>
-        <button class="pop">Finalizar Compra</button>
-        <p class="p-pop">Produto Digital, o download será liberado após o pagamento</p>
-        </div>
-{% endif %}
+                {% if cart %}
+                    <div class="value">
+                        <div class="dinheiro">
+                            <p class="elder-ajeita">Valor total:</p>
+                            <p class="valor">R$ {{ cart.values|cart_total|floatformat:2 }}</p>
+                        </div>
+                        <button class="pop">Finalizar Compra</button>
+                        <p class="p-pop">Produto Digital, o download será liberado após o pagamento</p>
+                    </div>
+                {% endif %}
 
         {% else %}
             <!-- Usuário NÃO logado -->
-             <h2 class="textopop">Meu carrinho</h2>
-             <img src= "{% static 'home/content.png' %}" alt=":/" 
-            style=
-            "width:400px;
-            margin-left: 180px;">
-
-        <div class="falta-de-conta">
-            
-            <button class="close" id="closeModal">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-            
-            <p class="ausente">Acho que... algo deu errado no seu carrinho...</p>
-            <p class="ausente2">Ja tentou entrar em alguma conta?</p>
-        </div>
-        <div class="links">
-            <a href="{% url 'login' %}" class="Fazer-login" >Entar em sua conta</a>
-            <p>/</p>
-            <a href="{% url 'register' %}" class="Fazer-login" >Criar sua conta</a>
-        </div> 
+            <h2 class="textopop">Meu carrinho</h2>
+            <img src="{% static 'home/content.png' %}" alt=":/" style="width:400px;margin-left: 180px;">
+            <div class="falta-de-conta">
+                <button class="close" id="closeModal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <p class="ausente">Acho que... algo deu errado no seu carrinho...</p>
+                <p class="ausente2">Ja tentou entrar em alguma conta?</p>
+            </div>
+            <div class="links">
+                <a href="{% url 'login' %}" class="Fazer-login">Entar em sua conta</a>
+                <p>/</p>
+                <a href="{% url 'register' %}" class="Fazer-login">Criar sua conta</a>
+            </div>
         {% endif %}
     </div>
 </div>

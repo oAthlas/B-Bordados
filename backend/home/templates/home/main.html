@@ -3,9 +3,8 @@
 {% block title %}B Bordados - Home{% endblock %}
 
 {% load static %}
-{% load cart_filter %}
-
 {% block content %}
+<link rel="stylesheet" href="{% static 'home/inicial1.css' %}">
 <div class="slider">
 
         <div class="slides">
@@ -69,7 +68,6 @@
         <p class="parcela"><strong>{{ product.installments_count }}</strong>X DE <strong>R${{ product.installments_value }}</strong></p>
     </div>
     {% endfor %}
+
 </div>
 {% endblock %}
-
-<script src="{% static 'home/Script.js' %}"></script>

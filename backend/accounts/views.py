@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
 from django.contrib import messages
-from django.contrib.auth import login as auth_login, get_user_model
+from django.contrib.auth import login as auth_login, get_user_model, logout
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 def register(request):
@@ -61,4 +62,10 @@ def teste(requests):
     User = get_user_model()
     users = User.objects.all()
     return render(requests, 'accounts/teste.html', {'users': users})
+
+@login_required
+def logout_view(request):
+    logout(request)
+    messages.success(request, "Desconectado com sucesso.")
+    return redirect("home")
 

@@ -1,35 +1,44 @@
+// ===== SLIDER =====
 let count = 1;
-document.getElementById("radio1").checked = true;
+const radio1 = document.getElementById("radio1");
 
-setInterval( function(){
+if (radio1) {
+    radio1.checked = true;
+
+    setInterval(() => {
         nextImage();
-}, 10000)
-
-
-function nextImage(){
-  count++;
-   if(count>4){
-      count = 1;
-    }
-
-    document.getElementById("radio"+count).checked = true;
+    }, 10000);
 }
 
+function nextImage() {
+    count++;
+    if (count > 4) {
+        count = 1;
+    }
 
+    const radio = document.getElementById("radio" + count);
+    if (radio) {
+        radio.checked = true;
+    }
+}
+
+// ===== MODAL =====
 const modal = document.getElementById("modal");
 const openBtn = document.getElementById("openmodal");
 const closeBtn = document.getElementById("closeModal");
 
-openBtn.onclick = () => {
-    modal.classList.add("ativo");
-};
+if (modal && openBtn && closeBtn) {
+    openBtn.onclick = () => {
+        modal.classList.add("ativo");
+    };
 
-closeBtn.onclick = () => {
-    modal.classList.remove("ativo");
-};
-
-modal.onclick = (e) => {
-    if (e.target === modal) {
+    closeBtn.onclick = () => {
         modal.classList.remove("ativo");
-    }
-};
+    };
+
+    modal.onclick = (e) => {
+        if (e.target === modal) {
+            modal.classList.remove("ativo");
+        }
+    };
+}
