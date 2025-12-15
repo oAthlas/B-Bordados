@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
 from django.contrib import messages
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login, get_user_model
 from django.contrib.auth.models import User
 
 
@@ -50,10 +50,15 @@ def login_view(request):
 
         if user is not None:
             auth_login(request, user)
-            return redirect('main')
+            return redirect("home")
         else:
             messages.error(request, 'Usuário ou senha incorretos ou inexistentes.')
             return redirect('login')
         
     return render(request, 'accounts/login.html')
+
+def teste(requests):
+    User = get_user_model()
+    users = User.objects.all()
+    return render(requests, 'accounts/teste.html', {'users': users})
 
