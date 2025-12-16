@@ -39,7 +39,9 @@
         {% else %}
             <!-- Usuário NÃO logado -->
             <h2 class="textopop">Meu carrinho</h2>
-            <img src="{% static 'home/content.png' %}" alt=":/" style="width:400px;margin-left: 180px;">
+            <div class="urso">
+            <img src="{% static 'home/content.png' %}" alt=":/">
+            </div>
             <div class="falta-de-conta">
                 <button class="close" id="closeModal">
                     <i class="fa-solid fa-xmark"></i>
@@ -56,3 +58,24 @@
     </div>
 </div>
 
+
+<style>
+    .urso{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .urso img{
+        width:400px;
+        
+    }
+
+    @media(max-width: 1485px){
+        .urso img{
+            
+            width: 300px;
+        }
+    }
+
+
+</style>

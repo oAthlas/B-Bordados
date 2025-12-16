@@ -132,3 +132,26 @@
       
     
      }
+
+      @media (max-width: 1024px) {
+        .container{
+        width: 300px;
+        height: 520px;
+        margin-top: 10px;
+        }
+
+        .smalli{
+            padding: 10px;
+        }
+    }
+
+    @media (max-width: 1024px){
+    .container{ 
+        margin-top: 50px;
+    }
+}
+     @media(max-width: 768px){
+        .container{
+            margin-top: 30px;
+        }
+     }

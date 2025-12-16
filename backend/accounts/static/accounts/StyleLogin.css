@@ -26,6 +26,7 @@
         border-radius: 17px;
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
         border: 2px solid #222;
+        
     }
 
     .btn-social {
@@ -80,7 +81,7 @@
         border: 1px solid #000;
         background-color: #f9f6ef;
         font-size: 14px;
-      padding-right: 0px;
+        padding-right: 0px;
        
     }
 
@@ -129,6 +130,26 @@
      .smalli{
       text-align: center;
       padding: 30px;
-      
-    
+     }
+    @media (max-width: 1024px) {
+        .container{
+        width: 300px;
+        height: 520px;
+        margin-top: 10px;
+        }
+
+        .smalli{
+            padding: 10px;
+        }
+    }
+
+    @media (max-width: 1024px){
+    .container{ 
+        margin-top: 50px;
+    }
+}
+     @media(max-width: 768px){
+        .container{
+            margin-top: 30px;
+        }
      }
