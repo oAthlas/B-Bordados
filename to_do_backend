@@ -1,0 +1,7 @@
+Inntegração com Abacate Pay:
+
+1. Criar app payments
+2. Template somente de checkout. Só revisa, compra é concluída externamente
+3. Views de exibição de checkout e ordenação de eventos
+4. Criar services.py onde fica toda a lógica pesada de JSON consumida pela Abacate Pay
+5. Definir onde o Webhook será consumido dentro do site
