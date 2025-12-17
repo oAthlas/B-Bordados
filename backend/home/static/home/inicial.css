@@ -218,6 +218,9 @@ body {
     z-index: 1000;
 }
 
+
+
+
 /* ====== MEDIA QUERIES ====== */
 @media (max-width: 1485px) {
     header{
