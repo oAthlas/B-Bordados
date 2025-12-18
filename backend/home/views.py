@@ -38,6 +38,32 @@ def product_show(request, id):
     products = Product.objects.all()
     return render(request, 'home/product.html', {'product': productshow, 'products': products,})
 
+def pesquisa(request):
+    query = request.GET.get('q')
+    products = Product.objects.all()
+    sort = request.GET.get('sort', None)
+
+    if sort == "price_asc":
+        products = products.order_by('price')
+    elif sort == "price_desc":
+        products = products.order_by('-price')
+    elif sort == "newest":
+        products = products.order_by('-id')
+    elif sort == "oldest":
+        products = products.order_by('id')
+    elif sort == "name_asc":
+        products = products.order_by('name')
+    elif sort == "name_desc":
+        products = products.order_by('-name')
+
+    if query:
+        products = products.filter(name__icontains=query)
+
+    return render(request, 'home/pesquisa.html', {
+        'products': products, 
+        'query': query
+    })
+
 @login_required
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
@@ -67,6 +93,3 @@ def remove_from_cart(request, item_id):
     messages.info(request, "Produto removido do carrinho.")
 
     return redirect('home')
-
-def pesquisa(request):
-    return render(request, 'home/pesquisa.html')

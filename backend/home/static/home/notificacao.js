@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Fecha automaticamente após X milissegundos
-    const TEMPO_FECHAR = 3000; // segundos
+    const TEMPO_FECHAR = 2000; // segundos
 
     setTimeout(() => {
         modal.style.display = 'none';

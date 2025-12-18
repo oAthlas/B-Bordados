@@ -8,6 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Fecha automaticamente após X milissegundos
-    const TEMPO_FECHAR = 1200;
+    const TEMPO_FECHAR = 2000;
     setTimeout(() => modal.style.display = 'none', TEMPO_FECHAR);
 });

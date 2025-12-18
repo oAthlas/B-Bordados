@@ -6,25 +6,35 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'home/pesquisa.css' %}">
 
-<h1 class="txt-top">Resultados para "Produto X"</h1>
+<h1 class="txt-top">Resultados para 
+    {% if query %}
+        "{{ query }}"
+    {% else %}
+        todos os produtos
+    {% endif %}</h1>
 
 <div class="container">
     <div class="botoes">
-        <a href="?sort=price_asc"><button>XXXXXXXX</button></a>
-        <a href="?sort=price_desc"><button>XXXXXXXX</button></a>
-        <a href="?sort=newest"><button>XXXXXXXX</button></a>
+        <a href="?q={{ query }}&sort=price_asc"><button>Menor Valor</button></a>
+        <a href="?q={{ query }}&sort=price_desc"><button>Maior valor</button></a>
+        <a href="?q={{ query }}&sort=newest"><button>Itens novos</button></a>
+        <a href="?q={{ query }}&sort=name_asc"><button>A-Z</button></a>
     </div>  
 
+{% for product in products %}    
     <div class="iitem-carrinho">
-        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="iiimgcarrinho">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="iiimgcarrinho">
 
         <div class="iinfo">
-        <p class="nnome">{{ item.product.name }}</p>
-        <p class="ppreco">R${{ item.product.price|floatformat:2 }}</p>
-        <p class="pparcela"> xxxxxxxxxxxxx </p>
+        <p class="nnome">{{ product.name }}</p>
+        <p class="ppreco">R${{ product.price|floatformat:2 }}</p>
+        <p class="pparcela">{{ product.installments_count }}x de {{ product.installments_value }}</p>
         <button>Adicionar ao carrinho</button>
         </div>
     </div>
+{% empty %}
+    <p class="no-results">Nenhum produto encontrado.</p>
+{% endfor %}
 
     </div>
 </div>
