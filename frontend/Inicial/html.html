@@ -1,92 +1,57 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Finalizar compra - B Bordados</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- Fonte -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- CSS externo -->
-  <link rel="stylesheet" href="/frontend/Inicial/style.css">
+    <meta charset="UTF-8">
+    <title>Resultados</title>
+    <link rel="stylesheet" href="/frontend/Inicial/style.css">
 </head>
 <body>
 
-  <main class="container">
+<header class="topo">
+    <h1 class="logo">B·Bordados</h1>
 
-    <!-- COLUNA ESQUERDA -->
-    <section class="left">
-      <div class="logo">B-Bordados</div>
-      <h1>Finalizar compra</h1>
+    <form method="GET" action="{% url 'pesquisa' %}" class="search-box">
+        <input type="text" name="q" value="{{ termo }}" placeholder="Buscar produtos">
+    </form>
 
-      <div class="products">
-        <div class="product">
-          <div class="product-img"></div>
-          <div class="product-info">
-            <h3>Nome do produto</h3>
-            <span>R$ 00,00</span>
-            <small>Até 10x sem juros</small>
-          </div>
-        </div>
+    <div class="icons">
+        <span>🛒</span>
+        <span class="perfil">B</span>
+    </div>
+</header>
 
-        <div class="product">
-          <div class="product-img"></div>
-          <div class="product-info">
-            <h3>Nome do produto</h3>
-            <span>R$ 00,00</span>
-            <small>Até 10x sem juros</small>
-          </div>
-        </div>
+<main class="container">
+    <aside class="filtros">
+        <button class="ativo">Mais relevantes</button>
+        <button>Menor preço</button>
+        <button>Maior preço</button>
+    </aside>
 
-        <div class="product">
-          <div class="product-img"></div>
-          <div class="product-info">
-            <h3>Nome do produto</h3>
-            <span>R$ 00,00</span>
-            <small>Até 10x sem juros</small>
-          </div>
-        </div>
-      </div>
+    <section class="resultados">
+        <h2>Resultados para <span>"{{ termo }}"</span></h2>
 
-      <a href="#" class="back">← Voltar ao início</a>
+        {% if produtos %}
+            {% for produto in produtos %}
+            <div class="card">
+                <div class="img"></div>
+
+                <div class="info">
+                    <h3>{{ produto.nome }}</h3>
+                    <p class="preco">R$ {{ produto.preco }}</p>
+                    <small>Até 10x sem juros</small>
+
+                    <button class="btn">Adicionar ao carrinho</button>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>Nenhum produto encontrado.</p>
+        {% endif %}
     </section>
+</main>
 
-    <!-- COLUNA DIREITA -->
-    <section class="right">
-      <div class="payment-box">
-
-        <div class="payment-methods">
-          <button class="active">💳 Cartão</button>
-          <button><i class="fa-brands fa-pix"></i>  Pix</button>
-          <button><i class="fa-solid fa-barcode"></i>  Boleto</button>
-        </div>
-
-        <div class="card-type">
-          <label><input type="radio" name="tipo" checked> Crédito</label>
-          <label><input type="radio" name="tipo"> Débito</label>
-        </div>
-
-        <input type="text" placeholder="Número do cartão">
-        <input type="text" placeholder="Nome do cartão">
-
-        <div class="row">
-          <input type="text" placeholder="MM/AA">
-          <input type="text" placeholder="CVV">
-        </div>
-
-      </div>
-
-      <div class="summary">
-        
-        <div class="line total"><span>Total</span><span>R$ 00,00</span></div>
-      </div>
-
-      <button class="finish">Finalizar compra</button>
-    </section>
-
-  </main>
-
+<script src="{% static 'js/pesquisa.js' %}"></script>
 </body>
 </html>

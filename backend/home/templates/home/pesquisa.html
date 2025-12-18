@@ -1,0 +1,35 @@
+{% extends 'home/base.html' %}
+
+{% block title %}B Bordados - Home{% endblock %}
+
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'home/pesquisa.css' %}">
+
+<h1 class="txt-top">Resultados para "Produto X"</h1>
+
+<div class="container">
+    <div class="botoes">
+        <a href="?sort=price_asc"><button>XXXXXXXX</button></a>
+        <a href="?sort=price_desc"><button>XXXXXXXX</button></a>
+        <a href="?sort=newest"><button>XXXXXXXX</button></a>
+    </div>  
+
+    <div class="iitem-carrinho">
+        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="iiimgcarrinho">
+
+        <div class="iinfo">
+        <p class="nnome">{{ item.product.name }}</p>
+        <p class="ppreco">R${{ item.product.price|floatformat:2 }}</p>
+        <p class="pparcela"> xxxxxxxxxxxxx </p>
+        <button>Adicionar ao carrinho</button>
+        </div>
+    </div>
+
+    </div>
+</div>
+
+
+<script src="{% static 'home/Script.js' %}"></script>
+
+{% endblock %}
