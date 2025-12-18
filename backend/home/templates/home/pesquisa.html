@@ -29,7 +29,10 @@
         <p class="nnome">{{ product.name }}</p>
         <p class="ppreco">R${{ product.price|floatformat:2 }}</p>
         <p class="pparcela">{{ product.installments_count }}x de {{ product.installments_value }}</p>
-        <button>Adicionar ao carrinho</button>
+        <form method="post" action="{% url 'add_to_cart' product.id %}">
+            {% csrf_token %}
+            <button type="submit">Adicionar ao carrinho</button>
+        </form>
         </div>
     </div>
 {% empty %}
