@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}B Bordados{% endblock %}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'home/notificacao.css' %}">
+    <link rel="stylesheet" href="{% static 'accounts/notificacao.css' %}">
+    <link rel="stylesheet" href="{% static 'accounts/StyleSignUp.css' %}">
+    <link rel="stylesheet" href="{% static 'accounts/StyleLogin.css' %}">
 
 </head>
 
@@ -22,12 +24,8 @@
     </div>
     {% endif %}
 
-    {% include 'home/partials/header.html' %}
-    {% include 'home/partials/modal.html' %}
-
     {% block content %}
     {% endblock %}
-    <script src="{% static 'home/Script.js' %}"></script>
-    <script src="{% static 'home/notificacao.js' %}"></script>
+
+<script src="{% static 'accounts/notificacao.js' %}"></script>
 </body>
-</html>

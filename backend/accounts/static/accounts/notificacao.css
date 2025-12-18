@@ -1,7 +1,7 @@
 .modal-msg {
     position: fixed;
     inset: 0;
-    background: none;
+    background: rgba(0,0,0,0.4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,6 +26,15 @@
 .msg.error   { color: #e53e3e; }
 .msg.warning { color: #ee9145; }
 .msg.info    { color: #337ed4; }
+
+.close {
+    border: none;
+    background: #e5007d;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
 
 @keyframes pop {
     from { transform: scale(0.8); opacity: 0; }
