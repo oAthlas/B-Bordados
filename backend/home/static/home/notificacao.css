@@ -1,33 +1,58 @@
+/* ===== TOAST NOTIFICATION ===== */
+
 .modal-msg {
     position: fixed;
-    inset: 0;
-    background: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    bottom: 24px;
+    right: 24px;
     z-index: 9999;
+    pointer-events: none;
 }
 
+/* caixa do toast */
 .modal-box {
-    background: #fff;
-    padding: 25px 30px;
-    border-radius: 10px;
+    background: #ffffff;
+    padding: 14px 18px;
+    border-radius: 12px;
     min-width: 280px;
-    text-align: center;
-    animation: pop 0.3s ease;
+    max-width: 360px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+
+    /* estado inicial (fora da tela) */
+    transform: translateX(120%);
+    opacity: 0;
+
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* animação entrada */
+.modal-box.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* animação saída */
+.modal-box.hide {
+    transform: translateX(120%);
+    opacity: 0;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon {
+    font-size: 18px;
+    color: #444;
+    line-height: 1;
+    flex-shrink: 0;
 }
 
 .msg {
-    margin-bottom: 15px;
-    font-weight: 500;
+    margin: 0;
+    font-size: 14px;
+    color: #222;
+    line-height: 1.4;
 }
 
-.msg.success { color: #439247; }
-.msg.error   { color: #e53e3e; }
-.msg.warning { color: #ee9145; }
-.msg.info    { color: #337ed4; }
-
-@keyframes pop {
-    from { transform: scale(0.8); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
-}

@@ -13,12 +13,23 @@
     {% if messages %}
     <div class="modal-msg">
         <div class="modal-box">
-            {% for message in messages %}
-                <p class="msg {{ message.tags }}">
-                {{ message }}
-                </p>
-            {% endfor %}
+    {% for message in messages %}
+        <div class="toast {{ message.tags }}">
+            {% if message.tags == "error" %}
+                <i class="icon fa-solid fa-circle-xmark"></i>
+            {% elif message.tags == "warning" %}
+                <i class="icon fa-solid fa-triangle-exclamation"></i>
+            {% elif message.tags == "success" %}
+                <i class="icon fa-solid fa-circle-check"></i>
+            {% else %}
+                <i class="icon fa-solid fa-circle-info"></i>
+            {% endif %}
+
+            <p class="msg">{{ message }}</p>
         </div>
+    {% endfor %}
+</div>
+
     </div>
     {% endif %}
 

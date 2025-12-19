@@ -1,22 +1,32 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const modal = document.querySelector(".modal-msg");
+document.addEventListener("DOMContentLoaded", function () {
 
-    // Se não existir mensagem, não faz nada
-    if (!modal) return;
+    var modal = document.querySelector(".modal-msg");
+    if (!modal) {
+        return;
+    }
 
-    const closeBtns = modal.querySelectorAll('.close');
+    var box = modal.querySelector(".modal-box");
+    if (!box) {
+        return;
+    }
 
-    // Anexa handler a todos os botões de fechar
-    closeBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-    });
+    // força repaint antes de animar
+    setTimeout(function () {
+        box.className += " show";
+    }, 10);
 
-    // Fecha automaticamente após X milissegundos
-    const TEMPO_FECHAR = 2000; // segundos
+    var TEMPO_FECHAR = 3000;
 
-    setTimeout(() => {
-        modal.style.display = 'none';
+    setTimeout(function () {
+
+        box.className = box.className.replace(" show", "") + " hide";
+
+        setTimeout(function () {
+            if (modal.parentNode) {
+                modal.parentNode.removeChild(modal);
+            }
+        }, 400);
+
     }, TEMPO_FECHAR);
+
 });
