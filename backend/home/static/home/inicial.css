@@ -223,44 +223,6 @@ body {
 
 /* ====== MEDIA QUERIES ====== */
 @media (max-width: 1485px) {
-    header{
-        justify-content: center;
-    }
-
-    .logo{
-        width: 160px;
-        margin-left: 0px;
-        margin-right: 80px;
-    }
-    .pesquisa {
-        display: 60px;
-        height: 35px;
-        width: 700px;
-    }
-
-    .lupa {
-        height: 35px;
-        margin-right: 75px ;
-    }
-
-    .direita{
-        gap: 45px;
-        margin-right: 40px;
-    }
-
-    .carrinho{
-        height: 25px;
-        width: 25px;
-    }
-
-    .menu{
-        height: 35px;
-        width: 35px;
-        margin-right: 30px;
-        border-radius: 20px;
-        padding: 0;
-    }
-
      /* ===== SLIDER ===== */
     .slider {
         width: 95%;
@@ -412,31 +374,6 @@ body {
 
 /* MOBILE */
 @media (max-width: 768px) {
-
-    header {
-        height: 90px;
-        padding: 0 15px;
-    }
-
-    .logo {
-        width: 130px;
-        margin-left: 20px;
-        margin-right: 30px;
-    }
-
-    .pesquisa {
-        width: 300px;
-        
-    }
-    .lupa{
-        margin-right: 70px;
-    }
-
-    .direita {
-        gap: 50px;
-        margin-right: 30px;
-    }
-
     /* ===== SLIDER ===== */
     .slider {
         width: 95%;
@@ -560,40 +497,6 @@ body {
 
 /* TELAS MUITO PEQUENAS */
 @media (max-width: 480px) {
-    header{
-        justify-content: center;
-        position: fixed;
-    }
-
-    .logo{
-        display: none; /* some no mobile */
-    }
-    .pesquisa {
-        display: 60px;
-        height: 35px;
-        width: 200px;
-    }
-
-    .lupa {
-        height: 35px;
-        margin-right: 30px ;
-    }
-
-    .direita{
-        gap: 15px;
-        margin-right: 30px;
-    }
-
-    .carrinho{
-        height: 25px;
-        width: 25px;
-    }
-
-    .menu{
-        height: 15px;
-        width: 15px;
-        margin-right: 8px;
-    }
     /* ===== SLIDER ===== */
     .slider {
         width: 95%;
