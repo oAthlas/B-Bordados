@@ -6,10 +6,12 @@
         <a href="{% url 'home' %}"><img src="{% static 'home/logo_bbordados.svg' %}" alt="" class="logo"></a>
          
             <form action="{% url 'pesquisa' %}" method="get" class="header-search" >
-            <input type="text" 
-            name="pesquisar" 
+            <input 
+            type="text" 
+            name="q"
             id="pesquisar" 
             placeholder="Pesquisar" 
+            value="{{ query|default:'' }}"
             class="Pesquisar">
             </form>
 
