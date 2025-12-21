@@ -76,7 +76,7 @@ def add_to_cart(request, product_id):
     except IntegrityError:
         messages.warning(request, "O produto já está no carrinho.")
 
-    return redirect('home')
+    return redirect(request.META.get('HTTP_REFERER', 'home'))
 
 
 @login_required
@@ -92,4 +92,4 @@ def remove_from_cart(request, item_id):
     cart_item.delete()
     messages.info(request, "Produto removido do carrinho.")
 
-    return redirect('home')
+    return redirect(request.META.get('HTTP_REFERER', 'home'))
