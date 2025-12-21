@@ -56,3 +56,44 @@
     line-height: 1.4;
 }
 
+@media (max-width: 480px) {
+
+    .modal-msg {
+        bottom: 12px;
+        right: 12px;
+        left: 12px; /* permite ocupar quase toda a largura */
+    }
+
+    .modal-box {
+        min-width: auto;
+        max-width: 100%;
+        width: 100%;
+
+        padding: 12px 14px;
+        border-radius: 10px;
+
+        /* animação vem de baixo no mobile (fica mais natural) */
+        transform: translateY(120%);
+    }
+
+    .modal-box.show {
+        transform: translateY(0);
+    }
+
+    .modal-box.hide {
+        transform: translateY(120%);
+    }
+
+    .toast {
+        gap: 10px;
+    }
+
+    .icon {
+        font-size: 16px;
+    }
+
+    .msg {
+        font-size: 13px;
+        line-height: 1.3;
+    }
+}

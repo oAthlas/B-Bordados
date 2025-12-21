@@ -1,13 +1,32 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.querySelector('.modal-msg');
-    if (!modal) return;
+document.addEventListener("DOMContentLoaded", function () {
 
-    const closeBtns = modal.querySelectorAll('.close');
-    closeBtns.forEach(btn => {
-        btn.addEventListener('click', () => modal.style.display = 'none');
-    });
+    var modal = document.querySelector(".modal-msg");
+    if (!modal) {
+        return;
+    }
 
-    // Fecha automaticamente após X milissegundos
-    const TEMPO_FECHAR = 2000;
-    setTimeout(() => modal.style.display = 'none', TEMPO_FECHAR);
+    var box = modal.querySelector(".modal-box");
+    if (!box) {
+        return;
+    }
+
+    // força repaint antes de animar
+    setTimeout(function () {
+        box.className += " show";
+    }, 10);
+
+    var TEMPO_FECHAR = 3000;
+
+    setTimeout(function () {
+
+        box.className = box.className.replace(" show", "") + " hide";
+
+        setTimeout(function () {
+            if (modal.parentNode) {
+                modal.parentNode.removeChild(modal);
+            }
+        }, 400);
+
+    }, TEMPO_FECHAR);
+
 });
