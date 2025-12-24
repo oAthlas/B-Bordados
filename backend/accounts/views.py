@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import login as auth_login, get_user_model, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from datetime import date
 
 def register(request):
     if request.method == "POST":
@@ -57,14 +58,63 @@ def login_view(request):
         
     return render(request, 'accounts/login.html')
 
-def teste(requests):
-    User = get_user_model()
-    users = User.objects.all()
-    return render(requests, 'accounts/teste.html', {'users': users})
-
 @login_required
 def logout_view(request):
     logout(request)
     messages.success(request, "Desconectado com sucesso.")
     return redirect("home")
 
+@login_required
+def profile(request):
+    customer = request.user.customer
+
+    if request.method == 'POST' and customer.confirmed_data:
+        messages.warning(
+            request, 
+            "Você já confirmou seus dados."
+        )
+        return render(request, 'accounts/profile.html',
+            {'customer': customer,
+            'locked': customer.confirmed_data}              
+        )
+    
+    if request.method == 'POST' and not customer.confirmed_data:
+        customer.cpf = request.POST.get('cpf')
+        customer.phone = request.POST.get('phone')
+        customer.complete_name = request.POST.get('complete_name')
+        customer.gender = request.POST.get('gender')
+        
+        day = request.POST.get('birth_day')
+        month = request.POST.get('birth_month')
+        year = request.POST.get('birth_year')
+
+        if day and month and year:
+            customer.birth_date = date(
+                int(year), 
+                int(month), 
+                int(day)
+            )
+
+            try:
+                customer.birth_date = date(int(year), int(month), int(day))
+            except ValueError:
+                messages.error(request, "Data de nascimento inválida.")
+                return redirect('profile')
+
+        if not all([customer.complete_name, customer.cpf, customer.phone]):
+            messages.error(request, "Preencha todos os campos obrigatórios.")
+            return redirect('profile')
+
+        customer.confirmed_data = True
+        customer.save()
+
+        messages.success(
+            request, 
+            "Dados confirmados com sucesso."
+        )
+        return render(request, 'accounts/profile.html',)
+    
+    return render(request, 'accounts/profile.html',
+        {'customer': customer,
+        'locked': customer.confirmed_data}
+    )
