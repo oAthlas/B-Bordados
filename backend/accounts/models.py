@@ -6,8 +6,6 @@ class Customer(models.Model):
     GENDER_CHOICES = [
         ('M', 'Masculino'),
         ('F', 'Feminino'),
-        ('O', 'Outro'),
-        ('U', 'Prefiro não dizer'),
     ]
 
     user = models.OneToOneField(
@@ -24,3 +22,5 @@ class Customer(models.Model):
         blank=True,
         null=True,
     )
+
+    confirmed_data = models.BooleanField(default=False)
