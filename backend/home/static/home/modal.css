@@ -44,7 +44,7 @@
     border-radius: 8px;
     border: none;
     background-color: #f1119b;
-    color: #eae9e9;
+    color: #f9f6ef;
     font-family: "montserrant","Poppins", sans-serif;
     font-size: 15px;
     cursor: pointer;
@@ -166,8 +166,17 @@
     margin-top: 0;
 }
 
-.remove{
-    text-decoration: none;
+.Box{
     color: #f1119b;
-    margin-top:45px ;
+    margin-top: 50px ;
+    border: none;
+    padding: 8px;
+    border-radius: 7px;
+    background-color: #f1119b;
+    cursor: pointer;
+}
+
+.remove {
+    text-decoration: none;
+    color: #f9f6ef;
 }

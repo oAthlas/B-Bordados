@@ -93,3 +93,5 @@ def remove_from_cart(request, item_id):
     messages.info(request, "Produto removido do carrinho.")
 
     return redirect(request.META.get('HTTP_REFERER', 'home'))
+
+

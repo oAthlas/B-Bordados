@@ -42,3 +42,45 @@ if (modal && openBtn && closeBtn) {
         }
     };
 }
+document.querySelectorAll(".remove").forEach(btn => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const itemId = btn.dataset.id;
+
+    fetch(`/remove-from-cart/${itemId}/`, {
+      method: "POST",
+      headers: {
+        "X-CSRFToken": getCookie("csrftoken"),
+      },
+    })
+    .then(() => {
+      // Recarrega só o conteúdo do carrinho
+      atualizarCarrinho(); // depois posso te mostrar sem reload
+    });
+  });
+});
+
+function atualizarCarrinho() {
+  fetch("/cart/partial/")
+    .then(res => res.text())
+    .then(html => {
+      document.querySelector(".ccompras").innerHTML = html;
+    });
+}
+
+
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== "") {
+    const cookies = document.cookie.split(";");
+    for (let cookie of cookies) {
+      cookie = cookie.trim();
+      if (cookie.startsWith(name + "=")) {
+        cookieValue = decodeURIComponent(cookie.slice(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}

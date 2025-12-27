@@ -9,43 +9,49 @@
 
 {% block content %}
 
-<h1 class="txt-top">Resultados para 
+<h1 class="search-title">
+    Resultados para 
     {% if query %}
         "{{ query }}"
     {% else %}
         todos os produtos
-    {% endif %}</h1>
+    {% endif %}
+</h1>
 
-<div class="container">
-    <div class="botoes">
+<div class="search-layout">
+    <div class="search-filters">
         <a href="?q={{ query }}&sort=price_asc"><button>Menor Valor</button></a>
         <a href="?q={{ query }}&sort=price_desc"><button>Maior valor</button></a>
         <a href="?q={{ query }}&sort=newest"><button>Itens novos</button></a>
-        <a href="?q={{ query }}&sort=name_asc"><button>A-Z</button></a>
     </div>  
 
 {% for product in products %}    
-    <div class="iitem-carrinho">
+    <div class="product-card">
         <a href="{% url 'product' product.id %}">
-        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="iiimgcarrinho">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
         </a>
-        <div class="iinfo">
-        <a style="text-decoration: none; color: black; margin-right: 980px;" href="{% url 'product' product.id %}">
-        <p class="nnome">{{ product.name }}</p>
-        </a>
-        <p class="ppreco">R${{ product.price|floatformat:2 }}</p>
-        <p class="pparcela">{{ product.installments_count }}x de {{ product.installments_value }}</p>
-        <form method="post" action="{% url 'add_to_cart' product.id %}">
-            {% csrf_token %}
-            <button type="submit">Adicionar ao carrinho</button>
-        </form>
+
+        <div class="product-info">
+            <a class="product-link" href="{% url 'product' product.id %}">
+                <p class="product-name">{{ product.name }}</p>
+            </a>
+
+            <p class="product-price">R${{ product.price|floatformat:2 }}</p>
+            <p class="product-installments">
+                {{ product.installments_count }}x de {{ product.installments_value }}
+            </p>
+
+            <form method="post" action="{% url 'add_to_cart' product.id %}">
+                {% csrf_token %}
+                <button type="submit">Adicionar ao carrinho</button>
+            </form>
         </div>
     </div>
 {% empty %}
     <p class="no-results">Nenhum produto encontrado.</p>
 {% endfor %}
+</div>
 
-    </div>
 </div>
 
 
