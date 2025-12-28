@@ -1,6 +1,3 @@
-/* Product page styles only — header rules removed to avoid conflicts
-   Header, body and global rules are handled centrally in header.css / inicial.css
-*/
 *{
     font-family: "montserrant","Poppins", sans-serif;
 }

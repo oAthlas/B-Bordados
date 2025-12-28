@@ -22,13 +22,13 @@ body {
 }
 
 .sidebar div{
-    margin-top: 20px;
+    margin-top: 30px;
     margin-left: 10px;
 }
 
 .sidebar a {
     display: flex;
-    margin-bottom: 10px;
+    margin-top: 10px;
     text-decoration: none;
     color: #282828;
     height: 40px;
@@ -58,11 +58,13 @@ body {
 }
 
 .content h1{
+    margin-top: 20px;
     margin-bottom: 60px;
 }
 
 .card {
     display: flex;
+    flex-wrap: wrap;
     gap: 40px;
     margin-top: 30px;
 }
@@ -224,4 +226,159 @@ body {
 
 .line{
     display: flex;
+}
+
+    @media (max-width: 1350px) {
+    .content {
+        padding: 30px;
+    }
+
+    .card {
+        gap: 30px;
+    }
+
+    .btn-save {
+        width: 90%;
+    }
+}
+    @media (max-width: 1170px) {
+    .row {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .field {
+        max-width: 100%;
+    }
+
+    .btn-save {
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    .gender{
+        margin-top: -95px;
+    }
+}
+
+@media (max-width: 900px) {
+    .content {
+        padding: 24px;
+    }
+
+    .date input{
+        width: 80px; 
+    }
+
+}
+
+@media (max-width: 825px) {
+
+    .date input{
+        width: 70px;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .content h1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+    }
+
+    .photo-area {
+        width: 100%;
+    }
+
+    .form {
+        width: 100%;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .field {
+        max-width: 100%;
+    }
+
+    .align-end {
+        justify-content: center;
+    }
+
+    .btn-save {
+        width: 100%;
+    }
+
+    .gender {
+        justify-content: center;
+    }
+
+    .date input{
+      width: 100px;
+    }
+
+}
+
+
+@media (max-width: 610px) {
+
+    .date input{
+        width: 90px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .sidebar{
+        width: 120px;
+        
+    }
+
+    .sidebar div{
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .content{
+        padding: 15px;
+    }
+
+    .content h1{
+        font-size: 24px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .sidebar a{
+        font-size: 12px;
+    }
+
+    .photo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .date {
+        gap: 5px;
+    }
+
+    .date input {
+        width: 65px;
+        margin-right: 2px;
+    }
+
+    .card{
+       gap: 20px; 
+    }
 }

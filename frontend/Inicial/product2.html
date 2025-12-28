@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/Inicial/styletopo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+<div class="container" style="margin-top: 0px;">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div>
+            <a href="#"><i class="fa-regular fa-user"></i> Conta</a>
+            <a href="#"><i class="fa-solid fa-bell-concierge"></i> Suporte</a>
+            <a class="active"><i class="fa-solid fa-bag-shopping"></i> Meus Pedidos</a>
+            <a href="#"><i class="fa-regular fa-money-bill-1"></i> Reembolsos</a>
+            <a href="{% url 'logout' %}" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sair</a>
+        </div>
+</aside>
+
+<section class="meus-pedidos">
+
+  <h2>Meus Pedidos</h2>
+
+  <div class="pedido-card">
+
+    <div class="pedido-img"></div>
+
+    <div class="pedido-info">
+      <h3>Nome do produto</h3>
+
+      <ul class="pedido-status">
+        <li class="status done">
+          <span class="radio"></span>
+          Pedido Realizado
+          <small>dd/mm/aa</small>
+        </li>
+
+        <li class="status done">
+          <span class="radio"></span>
+          Pagamento Confirmado
+          <small>dd/mm/aa</small>
+        </li>
+
+        <li class="status active">
+          <span class="radio"></span>
+          Download Liberado
+          <small>dd/mm/aa</small>
+        </li>
+      </ul>
+
+      <button class="btn-download">Pronto para Download</button>
+    </div>
+
+  </div>
+
+</section>
+
+</div>    
+</body>
+</html>
