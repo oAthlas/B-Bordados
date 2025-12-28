@@ -4,7 +4,7 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'home/inicial2.css' %}">
+<link rel="stylesheet" href="{% static 'home/product.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -16,8 +16,8 @@
 
     <div class="produto-info">
     <h1 class="produto-nome">{{ product.name }}</h1>
-    <p class="produto-preco">R$ {{ product.price }}</p>
-    <p class="parcelamento">Até {{ product.installments_count }}x de R$ {{ product.installments_value }}</p>
+    <p class="produto-preco">R${{ product.price }}</p>
+    <p class="parcelamento">Até {{ product.installments_count }}x de R${{ product.installments_value }}</p>
 
     <hr>
 

@@ -15,7 +15,9 @@
                             <div class="iinfo">
                                 <p class="nnome">{{ item.product.name }}</p>
                                 <p class="ppreco">R${{ item.product.price|floatformat:2 }}</p>
-                                <a href="{% url 'remove_from_cart' item.id %}" class="remove">Remover</a>
+                                <button class="Box" data-id="{{ item.id }}">
+                                    <a href="{% url 'remove_from_cart' item.id %}" class="remove">Remover</a>
+                                </button>
                             </div>
                         </div>
                     {% empty %}
@@ -71,7 +73,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 80px;
+        margin-top: 0px;
     }
 
     @media(max-width: 1485px){

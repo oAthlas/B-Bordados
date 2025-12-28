@@ -1,15 +1,12 @@
-/* Product page styles only — header rules removed to avoid conflicts
-   Header, body and global rules are handled centrally in header.css / inicial.css
-*/
 *{
     font-family: "montserrant","Poppins", sans-serif;
 }
 /* CONTAINER PRINCIPAL */
 .produto-container {
   display: flex;
-  gap: 80px;
+  gap: 60px;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 /* IMAGEM */
@@ -29,7 +26,7 @@
   
   display: flex;
   flex-direction: column;
-  margin-top: 130px;
+  margin-top: 100px;
 }
 
 .produto-nome {
@@ -43,7 +40,7 @@
   font-weight: bold;
   margin-bottom: 13px;
   margin-top: 5px ;
-  margin-bottom: 0;
+  margin-bottom: 5px;
 }
 
 .parcelamento {
@@ -194,7 +191,7 @@ label {
     border-radius: 15px;
     box-shadow: 3px 3px 8px #ccc; 
     margin-left: 120px;
-    margin-top: 140px;
+    margin-top: 68px;
 }
 .imagem{
     display: flex;
@@ -228,7 +225,7 @@ label {
     width: 90%;
     margin: 0 auto 40px auto;
     justify-items: center;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .produto {
@@ -277,6 +274,11 @@ label {
         width: 100%;
         gap: 50px;
     }
+
+    .produto-info {
+        margin-top: 140px;
+    }
+
 /* ===== PRODUTOS ===== */
     .produtos {
         display: grid;
@@ -307,14 +309,33 @@ label {
         margin-left: 15px;
     }
 }   
-    @media(max-width: 820px) {
+
+    @media(max-width: 950px) {
         .imagem img{
-            width: 350px;
-            height: 350px;
             margin-left: 40px;
-            margin-top: 140px;
+            width: 370px;
+            height:370px ;
         }
+
+        .produto-info {
+        margin-top: 105px;
+        }
+
+    }
+
+    @media(max-width: 820px) {
+    .imagem img{
+        width: 350px;
+        height: 350px;
+        margin-left: 40px;
+        margin-top: 75px;
+    }
         
+    .veja{
+        margin-left: 50px;
+
+    }
+
     .produto-container{
         gap: 30px;
     }
@@ -334,6 +355,11 @@ label {
     .aviso{
         font-size: 11px;
     }
+
+    .produto-info {
+    margin-top: 80px;
+    }
+
 }
 
 /* MOBILE */
@@ -348,7 +374,7 @@ label {
 }
 .imagem img{
     margin-left: 40px;
-    margin-top: 120px;
+    margin-top: 60px;
     height: 320px;
     width: 320px;
 }
@@ -430,7 +456,7 @@ label {
     }
     .imagem img{
         margin-left: 0;
-        margin-top: 100px;
+        margin-top: 30px;
     }
 
     .produto-info{
