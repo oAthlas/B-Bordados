@@ -121,3 +121,6 @@ def profile(request):
 
 def my_products(request):
     return render(request, 'accounts/myproducts.html')
+
+def perguntas(request):
+    return render(request, 'accounts/Perguntas.html')
