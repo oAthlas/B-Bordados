@@ -16,8 +16,10 @@
 }
 .modal.ativo {
     opacity: 1;
+    position: fixed;
     pointer-events: auto;
     z-index: 10000;
+    isolation: isolate;
 }
 
 .modal.ativo .modal-content {
