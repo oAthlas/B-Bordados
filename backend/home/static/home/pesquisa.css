@@ -70,15 +70,20 @@
     color: #282828;
 }
 
+.product-link:hover{
+    color: #f1119b;
+}
+
 .product-name {
     font-size: 22px;
     margin-top: 0;
+    margin-bottom: 12px;
 }
 
 .product-price {
     font-size: 18px;
     font-weight: bold;
-    margin: 0;
+    margin-bottom: 10px;
 }
 
 .product-installments {
@@ -89,7 +94,7 @@
 
 /* ===== BOTÃO ===== */
 .product-card button {
-    width: 220px;
+    width: 190px;
     padding: 11px;
     border-radius: 8px;
     border: none;
