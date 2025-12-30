@@ -183,7 +183,6 @@ label {
         font-size: 18px;
         margin-left: 15px;
     }
-    /* ===== MODAL ===== */
 
 .imagem img{
     width: 450px;
@@ -261,6 +260,19 @@ label {
 .veja{
     margin-top: 80PX;
     margin-left: 80px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .2);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
 }
 
 /* ====== MEDIA QUERIES ====== */

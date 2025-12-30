@@ -118,3 +118,6 @@ def profile(request):
         {'customer': customer,
         'locked': customer.confirmed_data}
     )
+
+def my_products(request):
+    return render(request, 'accounts/myproducts.html')

@@ -17,7 +17,7 @@
     align-items: center;
     gap: 16px;
     padding: 0 24px;
-    z-index: 9999;
+    z-index: 1000;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     justify-content: space-between;
 }
