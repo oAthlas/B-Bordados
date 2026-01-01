@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #f7f5f2;
+    color: #222;
+}
+
+.top {
+    padding: 20px 40px;
+}
+
+.logo {
+    font-weight: 800;
+}
+
+/* LAYOUT */
+.checkout {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 40px;
+    padding: 20px 40px 40px;
+}
+
+/* PRODUTOS */
+.products h2 {
+    margin-bottom: 20px;
+}
+
+.product {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.thumb {
+    width: 90px;
+    height: 90px;
+    background: #e0e0e0;
+    border-radius: 10px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.info span {
+    font-weight: 600;
+}
+
+.info small {
+    color: #666;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 20px;
+    color: #444;
+    text-decoration: none;
+}
+
+/* RESUMO */
+.summary {
+    background: #ececec;
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.illustration {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+}
+
+.illustration img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* VALORES */
+.values div {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.values .total {
+    border-bottom: none;
+    font-size: 18px;
+}
+
+/* BOTÃO */
+.finish {
+    margin-top: auto;
+    background: #e8008a;
+    color: #fff;
+    border: none;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.finish:hover {
+    opacity: 0.9;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+    .checkout {
+        grid-template-columns: 1fr;
+    }
+}
