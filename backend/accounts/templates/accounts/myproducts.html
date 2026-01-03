@@ -22,39 +22,53 @@
 
   <h2>Meus Pedidos</h2>
 
-  <div class="pedido-card">
+{% if products %}
+  {% for product in products %}
+    <div class="pedido-card">
 
-    <div class="pedido-img"></div>
+      <img class="pedido-img"
+           src="{{ product.image.url }}"
+           alt="{{ product.name }}">
 
-    <div class="pedido-info">
-      <h3>Nome do produto</h3>
+      <div class="pedido-info">
+        <h3>{{ product.name }}</h3>
 
-      <ul class="pedido-status">
-        <li class="status done">
-          <span class="radio"></span>
-          Pedido Realizado
-          <small>dd/mm/aa</small>
-        </li>
+        <ul class="pedido-status">
+          <li class="status done">
+            <span class="radio"></span>
+            Pedido Realizado
+          </li>
 
-        <li class="status done">
-          <span class="radio"></span>
-          Pagamento Confirmado
-          <small>dd/mm/aa</small>
-        </li>
+          <li class="status {% if product.is_paid %}done{% endif %}">
+            <span class="radio"></span>
+            Pagamento Confirmado
+          </li>
 
-        <li class="status active">
-          <span class="radio"></span>
-          Download Liberado
-          <small>dd/mm/aa</small>
-        </li>
-      </ul>
+          <li class="status {% if product.is_paid %}active{% endif %}">
+            <span class="radio"></span>
+            Download Liberado
+          </li>
+        </ul>
 
-      <button class="btn-download">Pronto para Download</button>
+        {% if product.is_paid %}
+          <button class="btn-download">
+            Pronto para Download
+          </button>
+        {% else %}
+          <span class="aguardando">
+            Aguardando pagamento
+          </span>
+        {% endif %}
+      </div>
+
     </div>
-
-  </div>
+  {% endfor %}
+{% else %}
+  <p class="nenhum-pedido">Você ainda não possui produtos.</p>
+{% endif %}
 
 </section>
+
 
 </div>    
 {% endblock %}

@@ -17,10 +17,11 @@
     
                 <p id="user_infos">
                     <span class="item-description">
-                        Fulano de Tal
+                        {{ user.username }}
                     </span>
-                    <span class="item-description">
-                        Lorem Ipsum
+                    <span style="color: green;"
+                    class="item-description">
+                        Online
                     </span>
                 </p>
             </div>
@@ -77,12 +78,13 @@
         </div>
 
         <div id="logout">
-            <button id="logout_btn" href="{% url 'logout' %}" >
+            <a style="text-decoration: none; color: black;"
+            href="{% url 'logout' %}" id="logout_btn">
                 <i class="fa-solid fa-right-from-bracket"></i>
                 <span class="item-description">
                     Logout
                 </span>
-            </button>
+            </a>
         </div>
     </nav>
     <!-- CONTEÚDO -->
@@ -130,7 +132,7 @@
 
                     <div class="field">
                         <label class="x">E-mail</label>
-                        <input value="{{ user.email }}"
+                        <input name="email" value="{{ user.email }}"
                         {% if locked %}readonly{% endif %}
                         type="email" placeholder="usuário@exemple.com">
                     </div>

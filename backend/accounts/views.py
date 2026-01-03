@@ -5,6 +5,10 @@ from django.contrib.auth import login as auth_login, get_user_model, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from datetime import date
+from products.models import Product
+from checkout.models import OrderItem
+from django.db.models import Exists, OuterRef
+
 
 def register(request):
     if request.method == "POST":
@@ -67,6 +71,7 @@ def logout_view(request):
 @login_required
 def profile(request):
     customer = request.user.customer
+    user = request.user
 
     if request.method == 'POST' and customer.confirmed_data:
         messages.warning(
@@ -79,6 +84,8 @@ def profile(request):
         )
     
     if request.method == 'POST' and not customer.confirmed_data:
+        user.email = request.POST.get('email')
+
         customer.cpf = request.POST.get('cpf')
         customer.phone = request.POST.get('phone')
         customer.complete_name = request.POST.get('complete_name')
@@ -107,20 +114,41 @@ def profile(request):
 
         customer.confirmed_data = True
         customer.save()
+        user.save()
 
         messages.success(
             request, 
-            "Dados confirmados com sucesso."
+            "Dados confirmados com sucesso! Por favor, recarregue a página."
         )
         return render(request, 'accounts/profile.html',)
     
     return render(request, 'accounts/profile.html',
         {'customer': customer,
-        'locked': customer.confirmed_data}
+         'user': user,
+         'locked': customer.confirmed_data}
     )
 
 def my_products(request):
-    return render(request, 'accounts/myproducts.html')
+    user = request.user
+
+    paid_items = OrderItem.objects.filter(
+        order__user=request.user,
+        order__status='paid',
+        product=OuterRef('pk')
+    )
+
+    products = (
+        Product.objects
+        .filter(orderitem__order__user=request.user)
+        .annotate(is_paid=Exists(paid_items))
+        .distinct()
+    )
+
+    return render(
+        request,
+        'accounts/myproducts.html',
+        {'products': products}
+    )
 
 def perguntas(request):
     return render(request, 'accounts/Perguntas.html')

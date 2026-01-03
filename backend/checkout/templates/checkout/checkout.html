@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+  {% load static %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Finalizar compra - B Bordados</title>
@@ -11,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- CSS externo -->
-  <link rel="stylesheet" href="/frontend/Inicial/chekout.css">
+  <link rel="stylesheet" href="{% static 'checkout/checkout.css' %}">
 </head>
 <body>
 
@@ -19,56 +20,42 @@
 
     <!-- COLUNA ESQUERDA -->
     <section class="left">
-      <div class="logo"><img src="/backend/home/static/home/logo_bbordados.svg" alt=""></div>
+      <div class="logo">
+        <a href="{% url 'home' %}">
+          <img src="{% static 'home/logo_bbordados.svg' %}" alt="">
+        </a>
+      </div>
       <h1>Finalizar compra</h1>
 
+    {% for item in cart.items.all %}
       <div class="products">
         <div class="product">
-          <div class="product-img"></div>
+            <img class="product-img" src="{{ item.product.image.url }}" alt="">
           <div class="product-info">
-            <h3>Nome do produto</h3>
-            <span>R$ 00,00</span>
-            <small>Até Yx sem juros</small> <br>
-            <a href="#"> Remover </a> 
+            <h3>{{ item.product.name }}</h3>
+            <span>R$ {{ item.product.price }}</span>
+            <small>Até {{ item.product.installments_count }}x sem juros</small> <br>
+            <a href="{% url 'remove_from_cart' item.id %}"> Remover </a> 
           </div>
         </div>
+    {% endfor %}
 
-        <div class="product">
-          <div class="product-img"></div>
-          <div class="product-info">
-            <h3>Nome do produto</h3>
-            <span>R$ 00,00</span>
-            <small>Até Yx sem juros</small> <br>
-            <a href="#"> Remover </a>
-          </div>
-        </div>
-
-        <div class="product">
-          <div class="product-img"></div>
-          <div class="product-info">
-            <h3>Nome do produto</h3>
-            <span>R$ 00,00</span>
-            <small>Até Yx sem juros</small> <br>
-            <a href="#"> Remover </a>
-          </div>
-        </div>
-      </div>
-
-      <a href="#" class="back">← Voltar ao início</a>
+      <a href="{% url 'home' %}" class="back">← Voltar ao início</a>
     </section>
 
     <!-- COLUNA DIREITA -->
     <section class="right">
       <div class="payment-box">
         <div class="img">
-        <img src="/frontend/Inicial/checkout.svg" alt="">
+        <img src="{% static 'checkout/checkout.svg' %}" alt="">
         </div>
       </div>
 
+    {% if cart.items.all %}
       <div class="summary">
         <div class="line total">
           <span>Subtotal</span>
-          <span>R$00,00</span>
+          <span>R${{ cart.total }}</span>
         </div>
       </div>
 
@@ -83,11 +70,17 @@
       <div class="summary">
         <div class="line total">
           <span>Total</span>
-          <span>R$00,00</span>
+          <span>R${{ cart.total }}</span>
         </div>
       </div>
+      <form action="{% url 'checkout_pay' %}" method="post">
+          {% csrf_token %}
+      <button type="submit" class="finish">Finalizar compra</button>
+      </form>
 
-      <button class="finish">Finalizar compra</button>
+    {% else %}
+      <button class="finish">Carrinho vazio</button>
+    {% endif %}
     </section>
 
   </main>

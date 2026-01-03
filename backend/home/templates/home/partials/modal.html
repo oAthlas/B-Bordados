@@ -31,7 +31,8 @@
                             <p class="elder-ajeita">Valor total:</p>
                             <p class="valor">R$ {{ cart.total|floatformat:2 }}</p>
                         </div>
-                        <button class="pop">Finalizar Compra</button>
+                        <a style="text-align: center; text-decoration: none; "
+                        href="{% url 'checkout' %}" class="pop">Finalizar Compra</a>
                         <p class="p-pop">Produto Digital, o download será liberado após o pagamento</p>
                     </div>
                 {% endif %}

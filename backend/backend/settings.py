@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 from django.urls import reverse_lazy
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,6 +37,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'home',
     'products',
+    'checkout',
     'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -158,3 +161,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+ABACATE_API_KEY = os.getenv("ABACATE_API_KEY")
+ABACATE_API_URL = "https://api.abacatepay.com/v1/billing/create"
+
+ABACATE_RETURN_URL = "https://seusite.com/checkout/return"
+ABACATE_COMPLETION_URL = "https://seusite.com/checkout/completed"
