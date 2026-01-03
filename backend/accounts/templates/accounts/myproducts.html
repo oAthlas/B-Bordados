@@ -51,9 +51,11 @@
         </ul>
 
         {% if product.is_paid %}
-          <button class="btn-download">
+          <a href="{% url 'download_product' product.id %}"
+          style="text-decoration: none; text-align: center;"
+           class="btn-download">
             Pronto para Download
-          </button>
+          </a>
         {% else %}
           <span class="aguardando">
             Aguardando pagamento
