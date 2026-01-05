@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
+    
 }
 /* Texto, centro da página*/
 .texto{
@@ -173,6 +174,7 @@ body {
     margin: 0 auto 40px auto;
     justify-items: center;
     margin-top: 50px;
+        padding-bottom: 90px;
 }
 
 .produto {
@@ -314,6 +316,9 @@ body {
         margin-left: 15px;
     }
     /* ===== MODAL ===== */
+    .close{
+        margin-top: 0px;
+    }
     .modal-content {
         width: 40%;
         margin-left: 60%;
@@ -337,6 +342,11 @@ body {
     .close{
         margin-right:25px;
         margin-top: 15px;
+    }
+
+    .textopop{
+        margin-top: 10px;
+        margin-bottom: 40px;
     }
 }
 
@@ -584,8 +594,14 @@ body {
     }
 
     /* ===== MODAL ===== */
+    .textopop{
+        margin-left: 0;
+        margin-top: -5px;
+        font-size: 19px;
+        margin-left: 20px;
+    }
     .modal-content {
-        width: 100%;
+        width: 80%;
         margin: 0;
         border-radius: 15px 0 0 0;
         bottom: 0;
@@ -593,11 +609,11 @@ body {
     }
 
     .pop {
-        width: 90%;
+        width: 100%;
         justify-content: center;
         display: flex;
         padding: 12px;
-        margin-left:15px;
+        margin-left:10px;
     }
 
     .value {
@@ -605,11 +621,12 @@ body {
     }
 
     .close{
-        margin-right:16px;
-        margin-top: 15px;
+        margin-right:0px;
+        margin-top: 0px;
     }
     .menu{
         width: 25px;
         height: 25px;
     }
 }
+

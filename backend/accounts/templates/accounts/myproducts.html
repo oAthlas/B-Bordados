@@ -8,15 +8,84 @@
 
 <div class="container" style="margin-top: 0px;">
     <!-- SIDEBAR -->
-    <aside class="sidebar">
-        <div>
-            <a href="{% url 'profile' %}"><i class="fa-regular fa-user"></i> Conta</a>
-            <a href="{% url 'perguntas' %}"><i class="fa-solid fa-bell-concierge"></i> Suporte</a>
-            <a class="active"><i class="fa-solid fa-bag-shopping"></i> Meus Pedidos</a>
-            <a href="#"><i class="fa-regular fa-money-bill-1"></i> Reembolsos</a>
-            <a href="{% url 'logout' %}" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sair</a>
+       <nav id="sidebar">
+        <div id="sidebar_content">
+            <div id="user">
+            <img src="https://imgs.search.brave.com/v4EB8iUioHcFOuYmSShvRUO3-8NOWJsBIFFgO-M1rM0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtcHJlbWl1/bS9waW5ndWltLWRl/LWh1bWJvbGR0LXNw/aGVuaXNjdXMtaHVt/Ym9sZHRpLWVtLXBl/XzE5MTk3MS0xMzcx/OS5qcGc_c2VtdD1h/aXNfaHlicmlkJnc9/NzQwJnE9ODA" 
+            id="user_avatar" alt="Avatar">
+    
+                <p id="user_infos">
+                    <span class="item-description">
+                        {{ user.username }}
+                    </span>
+                    <span style="color: green;"
+                    class="item-description">
+                        Online
+                    </span>
+                </p>
+            </div>
+    
+                <li class="side-item">
+                    <a href="#">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="item-description">
+                            Validação
+                        </span>
+                    </a>
+                </li>
+    
+                <li class="side-item">
+                    <a href="{% url 'perguntas' %}">
+                    <i class="fa-solid fa-bell-concierge"></i>                        <span class="item-description">
+                            Suporte
+                        </span>
+                    </a>
+                </li>
+    
+                <li class="side-item active">
+                    <a href="{% url 'my_products' %}">
+                        <i class="fa-solid fa-box"></i>
+                        <span class="item-description">
+                            Produtos
+                        </span>
+                    </a>
+                </li>
+    
+                <li class="side-item">
+                    <a href="{% url 'home' %}">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="item-description">
+                            Loja
+                        </span>
+                    </a>
+                </li>
+    
+                <li class="side-item">
+                    <a href="#">
+                        <i class="fa-solid fa-gear"></i>
+                        <span class="item-description">
+                            Configurações
+                        </span>
+                    </a>
+                </li>
+            </ul>
+    
+            <button id="open_btn">
+                <i id="open_btn_icon" class="fa-solid fa-chevron-right"></i>
+            </button>
+
         </div>
-</aside>
+
+        <div id="logout">
+            <a style="text-decoration: none; color: black;"
+            href="{% url 'logout' %}" id="logout_btn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="item-description">
+                    Logout
+                </span>
+            </a>
+        </div>
+    </nav>
 
 <section class="meus-pedidos">
 
