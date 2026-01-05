@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="settings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+       <nav id="sidebar">
+        <div id="sidebar_content">
+            <div id="user">
+            <img src="https://imgs.search.brave.com/v4EB8iUioHcFOuYmSShvRUO3-8NOWJsBIFFgO-M1rM0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtcHJlbWl1/bS9waW5ndWltLWRl/LWh1bWJvbGR0LXNw/aGVuaXNjdXMtaHVt/Ym9sZHRpLWVtLXBl/XzE5MTk3MS0xMzcx/OS5qcGc_c2VtdD1h/aXNfaHlicmlkJnc9/NzQwJnE9ODA" 
+            id="user_avatar" alt="Avatar">
+    
+                <p id="user_infos">
+                    <span class="item-description">
+                        {{ user.username }}
+                    </span>
+                    <span style="color: green;"
+                    class="item-description">
+                        Online
+                    </span>
+                </p>
+            </div>
+    
+                <li class="side-item">
+                    <a href="#">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="item-description">
+                            Validação
+                        </span>
+                    </a>
+                </li>
+    
+                <li class="side-item">
+                    <a href="{% url 'perguntas' %}">
+                    <i class="fa-solid fa-bell-concierge"></i>                        
+                    <span class="item-description">
+                            Suporte
+                        </span>
+                    </a>
+                </li>
+    
+                <li class="side-item">
+                    <a href="{% url 'my_products' %}">
+                        <i class="fa-solid fa-box"></i>
+                        <span class="item-description">
+                            Produtos
+                        </span>
+                    </a>
+                </li>
+    
+                <li class="side-item">
+                    <a href="{% url 'home' %}">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="item-description">
+                            Loja
+                        </span>
+                    </a>
+                </li>
+    
+                <li class="side-item active">
+                    <a href="#">
+                        <i class="fa-solid fa-gear"></i>
+                        <span class="item-description">
+                            Configurações
+                        </span>
+                    </a>
+                </li>
+            </ul>
+    
+            <button id="open_btn">
+                <i id="open_btn_icon" class="fa-solid fa-chevron-right"></i>
+            </button>
+
+        </div>
+
+        <div id="logout">
+            <a style="text-decoration: none; color: black;"
+            href="{% url 'logout' %}" id="logout_btn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="item-description">
+                    Logout
+                </span>
+            </a>
+        </div>
+    </nav>
+
+<div class="right">
+    <div class="configuracoes">
+        <h1> Configurações </h1>
+        
+        <h2>Minha conta</h2>
+        <h6 class="info1">blablabolablabçabinfolabnlabaklalanaanalanal</h6>
+
+            <h6 class="info">Alterar nome de usuário:</h6>
+            <div class="group">
+                <input type="text">
+                <button> <i class="fa-solid fa-check"></i></button>
+            </div>
+
+            <h6 class="info">Alterar E-mail:</h6>
+            <div class="group">
+                <input type="email" placeholder="usuário@exemplo.com">
+                <button> <i class="fa-solid fa-check"></i></button>
+            </div>
+    </div>
+
+    <div class="senha1">
+        <h6 class="info">Alterar Senha:</h6>
+        <input type="password" class="senhas" placeholder="Senha atual">
+        <a href="#"> Esqueci minha senha? </a>
+
+        <input type="password" class="senhas" placeholder="Nova senha">
+        <input type="password" class="senhas" placeholder="Confirmar nova senha">
+
+        <button> Alterar senha </button>
+    </div>
+
+    <h6 class="aviso"> voce tem certeza que quer excluir todos os dados existentes</h6>
+    <button class="delete"> Excluir conta </button>
+</div>
+
+
+    <script src="/frontend/Inicial/script.js"> </script>
+    </body>
+</html>
