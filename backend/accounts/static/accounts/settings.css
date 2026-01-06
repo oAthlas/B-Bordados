@@ -171,7 +171,7 @@ main {
     gap: 14px;
 }
 
-.right{
+.right4{
     margin-left: 160px;
 }
 
@@ -192,14 +192,14 @@ main {
     margin-left: 5px;
 }
 
-.info{
+.info4{
     margin-bottom: 5px;
     font-size: 15px;
     font-weight: 400;
     margin-left: 5px;
 }
 
-.group input{
+.group4 input{
     width: 450px;
     height: 43px;
     padding: 13px;
@@ -209,13 +209,14 @@ main {
     margin-right: 5px;
 }
 
-.group button{
+.group4 button{
     width: 43px;
     height: 40px;
     border-radius: 8px;
     border: none;
     background-color: #f1119b;
     color: #f9f6ef;
+    cursor: pointer;
 }
 
 .senha1{
@@ -255,6 +256,7 @@ main {
     color: #f9f6ef;
     background-color: #f1119b;
     font-weight: 400;
+    cursor: pointer;
 }
 
 .aviso{

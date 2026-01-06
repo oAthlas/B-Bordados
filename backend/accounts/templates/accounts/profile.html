@@ -1,10 +1,13 @@
 {% extends 'home/base.html' %}
 
 {% block title %}Perfil{% endblock %}
-
 {% load static %}
-{% block content %}
+
+{% block extra_css %}
 <link rel="stylesheet" href="{% static 'accounts/profile.css' %}">
+{% endblock %}
+
+{% block content %}
 
 <div class="container" style="margin-top: 0px;">
 
@@ -62,7 +65,7 @@
                 </li>
     
                 <li class="side-item">
-                    <a href="#">
+                    <a href="{% url 'settings' %}">
                         <i class="fa-solid fa-gear"></i>
                         <span class="item-description">
                             Configurações

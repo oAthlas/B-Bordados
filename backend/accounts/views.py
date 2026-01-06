@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
 from django.contrib import messages
-from django.contrib.auth import login as auth_login, get_user_model, logout
+from django.contrib.auth import login as auth_login, get_user_model, logout, update_session_auth_hash
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from datetime import date
@@ -128,6 +128,7 @@ def profile(request):
          'locked': customer.confirmed_data}
     )
 
+@login_required
 def my_products(request):
     user = request.user
 
@@ -150,5 +151,62 @@ def my_products(request):
         {'products': products}
     )
 
+@login_required
 def perguntas(request):
     return render(request, 'accounts/Perguntas.html')
+
+@login_required
+def settings(request):
+    return render(request, 'accounts/settings.html')
+
+@login_required
+def change_username(request):
+    if request.method == 'GET':
+        return render(request, 'accounts/settings.html')
+    elif request.method == 'POST':
+        new_username = request.POST.get('username')
+        if new_username:
+            request.user.username = new_username
+            request.user.save()
+            messages.success(request, "Nome de usuário atualizado com sucesso.")
+        return redirect('settings')
+
+@login_required
+def change_password(request):
+    user = request.user
+
+    if request.method == 'POST':
+        new_password = request.POST.get('new_password')
+        confirmation = request.POST.get('confirm_new_password')
+        actual_password = user.check_password(request.POST.get('actual_password'))
+        
+        if not actual_password:
+            messages.error(request, "Senha atual incorreta.")
+            return redirect('settings')
+        
+        if new_password != confirmation:
+            messages.error(request, "As senhas não coincidem.")
+            return redirect('settings')
+        
+        if len(new_password) < 6:
+            messages.error(request, "A senha deve ter pelo menos 6 caracteres.")
+            return redirect('settings')
+        
+        if new_password == confirmation:
+            request.user.set_password(new_password)
+            request.user.save()
+            update_session_auth_hash(request, request.user)
+            messages.success(request, "Senha atualizada com sucesso.")
+        return redirect('settings')
+    
+    else:
+        return render(request, 'accounts/settings.html')
+
+@login_required
+def delete_account(request):
+    messages.warning(request, "Para excluir sua conta, entre em contato com o suporte.")
+    return redirect('settings')
+
+def forgot_password(request):
+    messages.info(request, "Funcionalidade de recuperação de senha em desenvolvimento. Para fazer uma nova senha entre em contato com o suporte.")
+    return redirect('settings')
