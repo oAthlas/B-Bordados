@@ -47,3 +47,24 @@ document.getElementById('open_btn').addEventListener('click', function () {
     document.getElementById('sidebar').classList.toggle('open-sidebar');
 });
 
+
+function openProfileModal() {
+    document.getElementById('profileModal').classList.add('active');
+}
+
+function closeProfileModal() {
+    document.getElementById('profileModal').classList.remove('active');
+}
+
+function selectAvatar(img) {
+
+    // remove seleção anterior
+    document.querySelectorAll('.profile-suggestions img')
+        .forEach(el => el.classList.remove('active'));
+
+    // marca o atual
+    img.classList.add('active');
+
+    // joga no preview
+    document.getElementById('profilePreview').src = img.src;
+}

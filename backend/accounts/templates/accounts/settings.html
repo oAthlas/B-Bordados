@@ -95,8 +95,8 @@
         <h1> Configurações </h1>
         
         <h2>Minha conta</h2>
-        <h6 class="info1">Aqui você pode gerenciar as informações da sua conta, como nome de usuário e senha.<br>
-            Algumas alterações são imediatas, outras podem exigir confirmação por segurança.</h6>
+        <h6 class="info1">Aqui você pode gerenciar as informações da sua conta, como nome de usuário<br> e senha.
+            Algumas alterações são imediatas, outras podem exigir confirmação <br>por segurança.</h6>
 
             <h6 class="info4">Alterar nome de usuário:</h6>
             <div class="group4">
@@ -122,8 +122,13 @@
         <button type="submit" > Alterar senha </button>
     </div>
 </form>
-
-    <h6 class="aviso"> voce tem certeza que quer excluir todos os dados existentes</h6>
-    <a href="{% url 'delete_account' %}" style="text-align: center; text-decoration: none; display:flex" class="delete"> Excluir conta </a>
+    <div class="delete">
+        <h1>Área de exclusão de conta</h1>
+        <h6 class="aviso"> Ao excluir sua conta, todos os seus dados serão apagados permanentemente, <br> 
+            incluindo informações pessoais, histórico e conteúdos salvos. Essa ação não <br> 
+            poderá ser desfeita e você perderá o acesso à plataforma imediatamente. Se <br>
+            tiver certeza de que deseja continuar, confirme a exclusão.</h6>
+        <a href="{% url 'delete_account' %}"> Excluir conta </a>
+    </div>
 </div>
 {% endblock %}

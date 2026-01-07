@@ -172,7 +172,7 @@ main {
 }
 
 .right4{
-    margin-left: 160px;
+    margin-left: 190px;
 }
 
 .configuracoes h1{
@@ -182,7 +182,7 @@ main {
 }
 
 .configuracoes h2{
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 .info1{
@@ -260,17 +260,20 @@ main {
 }
 
 .aviso{
-    margin-bottom: 16px;
-    margin-top: 40px;
+    margin-bottom: 30px;
+    margin-top: 10px;
     font-size: 14px;
     font-weight: 400;
     margin-left: 5px;
 }
 
-.delete{
-    width: 500px;
+.delete a{
+    
+    width: 400px;
     height: 43px;
     padding: 13px;
+    padding-left: 210px;
+    padding-right: 210px;
     border-radius: 8px;
     border: none;
     margin-bottom: 25px;
@@ -279,4 +282,46 @@ main {
     color: #f9f6ef;
     background-color: #db224a;
     font-weight: 400;
+    text-decoration: none;
+    
+}
+
+.delete h1{
+    font-size: 23px;
+    margin-top: 50px;
+    
+}
+
+
+@media (max-width: 900px) {
+
+    #sidebar{
+        margin-top: 12px;
+    }
+
+}
+
+@media (max-width: 825px) {
+
+#sidebar{
+        margin-top: 12px;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    #sidebar{
+        margin-top: 2px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    #sidebar {
+        margin-top: 2px;
+    }
+
 }
