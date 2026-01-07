@@ -17,7 +17,7 @@
             <input type="radio" name="radio-bnt" id="radio4">
             
             <div class="slide first">
-                <img src="https://blog.saninternet.com/wp-content/uploads/2017/11/san-banner-successo-1.jpg" 
+                <img src="{% static 'home/slide-first.png' %}" 
                 alt="imagem 1"/>
             </div>
 
@@ -68,7 +68,6 @@
 
         <p class="nome">{{ product.name }}</p>
         <p class="preco">R${{ product.price }}</p>
-        <p class="parcela"><strong>{{ product.installments_count }}</strong>X DE <strong>R${{ product.installments_value }}</strong></p>
     </div>
 
     {% endfor %}

@@ -4,8 +4,6 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    installments_count = models.IntegerField(null=True, blank=True)
-    installments_value = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     image = models.ImageField(upload_to='products/', null=True, blank=True)
 
     file = models.FileField(upload_to='product_archives/', null=True, blank=True)
