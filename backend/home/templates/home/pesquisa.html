@@ -37,9 +37,6 @@
             </a>
 
             <p class="product-price">R${{ product.price|floatformat:2 }}</p>
-            <p class="product-installments">
-                {{ product.installments_count }}x de {{ product.installments_value }}
-            </p>
 
             <form method="post" action="{% url 'add_to_cart' product.id %}">
                 {% csrf_token %}

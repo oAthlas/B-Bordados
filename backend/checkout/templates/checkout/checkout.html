@@ -35,7 +35,6 @@
           <div class="product-info">
             <h3>{{ item.product.name }}</h3>
             <span>R$ {{ item.product.price }}</span>
-            <small>Até {{ item.product.installments_count }}x sem juros</small> <br>
             <a href="{% url 'remove_from_cart' item.id %}"> Remover </a> 
           </div>
         </div>
