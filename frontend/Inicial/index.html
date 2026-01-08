@@ -11,7 +11,7 @@
     <nav id="sidebar">
         <div id="sidebar_content">
             <div id="user">
-            <img src="https://imgs.search.brave.com/v4EB8iUioHcFOuYmSShvRUO3-8NOWJsBIFFgO-M1rM0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtcHJlbWl1/bS9waW5ndWltLWRl/LWh1bWJvbGR0LXNw/aGVuaXNjdXMtaHVt/Ym9sZHRpLWVtLXBl/XzE5MTk3MS0xMzcx/OS5qcGc_c2VtdD1h/aXNfaHlicmlkJnc9/NzQwJnE9ODA" 
+            <img src="{% static 'accounts/' %}{{ customer.avatar | default:'avatar_none' }}.png" 
             id="user_avatar" alt="Avatar">
     
                 <p id="user_infos">

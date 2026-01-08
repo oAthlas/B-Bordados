@@ -24,3 +24,4 @@ class Customer(models.Model):
     )
 
     confirmed_data = models.BooleanField(default=False)
+    avatar = models.CharField(max_length=20, blank=True)

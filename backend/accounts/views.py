@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from datetime import date
 from products.models import Product
 from checkout.models import OrderItem
-from django.db.models import Exists, OuterRef
+from django.db.models import Exists, OuterRef, Subquery
 
 
 def register(request):
@@ -73,14 +73,19 @@ def profile(request):
     customer = request.user.customer
     user = request.user
 
+    avatars = [
+        'avatar_1', 'avatar_2', 'avatar_3',
+        'avatar_4', 'avatar_5', 'avatar_6', 'avatar_none'
+    ]
+
     if request.method == 'POST' and customer.confirmed_data:
         messages.warning(
             request, 
             "Você já confirmou seus dados."
         )
         return render(request, 'accounts/profile.html',
-            {'customer': customer,
-            'locked': customer.confirmed_data}              
+            {'customer': customer, 'avatars': avatars,
+            'locked': customer.confirmed_data}        
         )
     
     if request.method == 'POST' and not customer.confirmed_data:
@@ -138,17 +143,24 @@ def my_products(request):
         product=OuterRef('pk')
     )
 
+    pending_payment_url = OrderItem.objects.filter(
+        order__user=user,
+        order__status='pending',
+        product=OuterRef('pk'),
+        order__payment_url__isnull=False
+    ).values_list('order__payment_url', flat=True)[:1]
+
     products = (
         Product.objects
         .filter(orderitem__order__user=request.user)
-        .annotate(is_paid=Exists(paid_items))
+        .annotate(is_paid=Exists(paid_items), pending_payment_url=Subquery(pending_payment_url))
         .distinct()
     )
 
     return render(
         request,
         'accounts/myproducts.html',
-        {'products': products}
+        {'products': products, 'pending_payment_url': Subquery(pending_payment_url)}
     )
 
 @login_required
@@ -210,3 +222,20 @@ def delete_account(request):
 def forgot_password(request):
     messages.info(request, "Funcionalidade de recuperação de senha em desenvolvimento. Para fazer uma nova senha entre em contato com o suporte.")
     return redirect('settings')
+
+@login_required
+def change_avatar(request):
+    if request.method == 'POST':
+        avatar = request.POST.get('avatar')
+
+        allowed = [
+            'avatar_1', 'avatar_2', 'avatar_3',
+            'avatar_4', 'avatar_5', 'avatar_6', 'avatar_none'
+        ]
+
+        if avatar in allowed:
+            request.user.customer.avatar = avatar
+            request.user.customer.save()
+            messages.success(request, "Avatar atualizado com sucesso.")
+
+    return redirect('profile')

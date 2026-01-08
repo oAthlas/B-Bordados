@@ -56,6 +56,7 @@ function closeProfileModal() {
     document.getElementById('profileModal').classList.remove('active');
 }
 
+// ===== AVATAR SELECTION =====
 function selectAvatar(img) {
 
     // remove seleção anterior
@@ -67,4 +68,7 @@ function selectAvatar(img) {
 
     // joga no preview
     document.getElementById('profilePreview').src = img.src;
+
+    // 🔥 NOVO: salva o avatar escolhido pro backend
+    document.getElementById('selectedAvatar').value = img.dataset.avatar;
 }

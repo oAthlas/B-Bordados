@@ -15,7 +15,7 @@
        <nav id="sidebar">
         <div id="sidebar_content">
             <div id="user">
-            <img src="https://imgs.search.brave.com/v4EB8iUioHcFOuYmSShvRUO3-8NOWJsBIFFgO-M1rM0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtcHJlbWl1/bS9waW5ndWltLWRl/LWh1bWJvbGR0LXNw/aGVuaXNjdXMtaHVt/Ym9sZHRpLWVtLXBl/XzE5MTk3MS0xMzcx/OS5qcGc_c2VtdD1h/aXNfaHlicmlkJnc9/NzQwJnE9ODA" 
+            <img src="{% static 'accounts/' %}{{ customer.avatar | default:'avatar_none' }}.png"
             id="user_avatar" alt="Avatar">
     
                 <p id="user_infos">
@@ -99,10 +99,9 @@
             <!-- FOTO -->
             <div class="photo-area">
                 <div class="photo">
-                    <img src="https://imgs.search.brave.com/v4EB8iUioHcFOuYmSShvRUO3-8NOWJsBIFFgO-M1rM0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtcHJlbWl1/bS9waW5ndWltLWRl/LWh1bWJvbGR0LXNw/aGVuaXNjdXMtaHVt/Ym9sZHRpLWVtLXBl/XzE5MTk3MS0xMzcx/OS5qcGc_c2VtdD1h/aXNfaHlicmlkJnc9/NzQwJnE9ODA" alt="Foto do usuário">
+                    <img src="{% static 'accounts/' %}{{ customer.avatar | default:'avatar_none' }}.png" alt="Foto do usuário">
                 </div>
                 <button class="btn-photo" onclick="openProfileModal()">Alterar foto</button>
-                <small>Formato: JPEG ou PNG</small>
             </div>
 
             <!-- FORM -->
@@ -193,37 +192,37 @@
 <!-- MODAL -->
 <div class="profile-modal" id="profileModal">
 
+<form method="post" action="{% url 'change_avatar' %}">
+    {% csrf_token %}
     <div class="profile-modal-content">
 
         <button class="profile-modal-close" onclick="closeProfileModal()">×</button>
 
         <h2>Escolha sua foto de perfil</h2>
+        <input type="hidden" name="avatar" id="selectedAvatar">
 
         <!-- PREVIEW PRINCIPAL -->
         <div class="profile-preview">
-            <img id="profilePreview" src="https://via.placeholder.com/200">
+            <img id="profilePreview" src="{% static 'accounts/' %}{{ customer.avatar | default:'avatar_none' }}.png" alt="Preview do avatar">
         </div>
 
         <!-- SUGESTÕES -->
         <div class="profile-suggestions">
-            <img src="https://st.depositphotos.com/1323776/5120/i/600/depositphotos_51202997-stock-photo-pineapple-wearing-sunglasses.jpg" onclick="selectAvatar(this)">
-            <img src="https://st.depositphotos.com/1323776/5120/i/600/depositphotos_51202997-stock-photo-pineapple-wearing-sunglasses.jpg" onclick="selectAvatar(this)">
-            <img src="https://st.depositphotos.com/1323776/5120/i/600/depositphotos_51202997-stock-photo-pineapple-wearing-sunglasses.jpg" onclick="selectAvatar(this)">
-            <img src="https://st.depositphotos.com/1323776/5120/i/600/depositphotos_51202997-stock-photo-pineapple-wearing-sunglasses.jpg" onclick="selectAvatar(this)">
-            <img src="https://st.depositphotos.com/1323776/5120/i/600/depositphotos_51202997-stock-photo-pineapple-wearing-sunglasses.jpg" onclick="selectAvatar(this)">
-            <img src="https://st.depositphotos.com/1323776/5120/i/600/depositphotos_51202997-stock-photo-pineapple-wearing-sunglasses.jpg" onclick="selectAvatar(this)">
+            <img src="{% static 'accounts/avatar_1.png' %}" data-avatar="avatar_1" onclick="selectAvatar(this)">
+            <img src="{% static 'accounts/avatar_2.png' %}" data-avatar="avatar_2" onclick="selectAvatar(this)">
+            <img src="{% static 'accounts/avatar_3.png' %}" data-avatar="avatar_3" onclick="selectAvatar(this)">
+            <img src="{% static 'accounts/avatar_4.png' %}" data-avatar="avatar_4" onclick="selectAvatar(this)">
+            <img src="{% static 'accounts/avatar_5.png' %}" data-avatar="avatar_5" onclick="selectAvatar(this)">
+            <img src="{% static 'accounts/avatar_6.png' %}" data-avatar="avatar_6" onclick="selectAvatar(this)">
         </div>
 
         <!-- AÇÕES -->
         <div class="profile-actions">
-            <button class="cancel" onclick="closeProfileModal()">Cancelar</button>
-            <button class="save">Salvar</button>
+            <button type="button" class="cancel" onclick="closeProfileModal()">Cancelar</button>
+            <button type="submit" class="save">Salvar</button>
         </div>
 
     </div>
+</form>
 </div>
-
-
-
-<script src="/frontend/Inicial/script.js"> </script>
 {% endblock %}
