@@ -4,33 +4,25 @@ from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.contrib import messages
 
-from products.models import Product
+from products.models import Product, Category
 from home.models import CartItem, banners
 
 
 # Create your views here.
 
 def home(request):
-    sort = request.GET.get('sort', None)
     products = Product.objects.all()
+    categories = Category.objects.all()
     banners_list = banners.objects.all()
 
-    if sort == "price_asc":
-        products = products.order_by('price')
-    elif sort == "price_desc":
-        products = products.order_by('-price')
-    elif sort == "newest":
-        products = products.order_by('-id')
-    elif sort == "oldest":
-        products = products.order_by('id')
-    elif sort == "name_asc":
-        products = products.order_by('name')
-    elif sort == "name_desc":
-        products = products.order_by('-name')
+    category_slug = request.GET.get("category")
+    if category_slug:
+        products = products.filter(category__slug=category_slug)
 
     return render(request, 'home/main.html', {
         'products': products,
-        'banners': banners_list
+        'banners': banners_list,
+        'categories': categories,
         })
 
 def product_show(request, id):
@@ -40,28 +32,20 @@ def product_show(request, id):
 
 def pesquisa(request):
     query = request.GET.get('q')
+    categories = Category.objects.all()
     products = Product.objects.all()
-    sort = request.GET.get('sort', None)
 
-    if sort == "price_asc":
-        products = products.order_by('price')
-    elif sort == "price_desc":
-        products = products.order_by('-price')
-    elif sort == "newest":
-        products = products.order_by('-id')
-    elif sort == "oldest":
-        products = products.order_by('id')
-    elif sort == "name_asc":
-        products = products.order_by('name')
-    elif sort == "name_desc":
-        products = products.order_by('-name')
+    category_slug = request.GET.get("category")
+    if category_slug:
+        products = products.filter(category__slug=category_slug)
 
     if query:
         products = products.filter(name__icontains=query)
 
     return render(request, 'home/pesquisa.html', {
         'products': products, 
-        'query': query
+        'query': query,
+        'categories': categories,
     })
 
 @login_required

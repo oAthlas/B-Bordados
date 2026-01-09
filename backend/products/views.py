@@ -6,10 +6,6 @@ from django.shortcuts import get_object_or_404
 from checkout.models import OrderItem
 from products.models import Product
 
-def product_list(request):
-    products = Product.objects.all()
-    return render(request, 'products/product_list.html', {'products': products})
-
 @login_required
 def download_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
