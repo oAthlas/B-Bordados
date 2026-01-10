@@ -29,25 +29,24 @@
 }
 
 .groupe{
-    display: flex;
-    width: 650px;
+   display: flex; 
 }
 
 /* formulário de busca */
 .form-search {
-    flex: 1;
+    display: flex;
     width: 350px;
 }
 
 .search {
-    width: 100%;
+    width: 600px;
     height: 42px;
     padding: 0 14px;
     border-radius: 10px 0 0 10px;
     border: none;
     outline: none;
     background-color: #eae9e9;
-    margin-left: -40px;
+    margin-left: -250px;
 }
 
 /* botão da lupa */
@@ -56,9 +55,11 @@
     border: none;
     cursor: pointer;
     width: 45px;
+    height: 42px;
     border-radius: 0 10px 10px 0;
     padding-right: 10px;
-    margin-left: -40px;
+    margin-left: -10px;
+    
 }
 
 .glass {
@@ -149,7 +150,7 @@ body {
     }
 
     .form-search {
-        width: 300px;
+        width: 600px;
     }
 
     .search {
@@ -160,6 +161,7 @@ body {
 
     .glass-button{
         margin-left: 0px;
+        height: 38px;
     }
 
     .glass{
@@ -203,12 +205,16 @@ body {
     }
 
     .form-search {
-        width: 260px;
+        width: 600px;
     }
 
     .search {
         height: 33px;
         font-size: 12px;
+    }
+
+    .glass-button{
+        height: 33px;
     }
 
     .glass{
@@ -258,13 +264,18 @@ body {
 
     .form-search {
         width: 100%;
-        max-width: 320px;
+        max-width: 500px;
     }
 
      .search {
         height: 36px;
         font-size: 12px;
     }
+
+    .glass-button{
+        height: 36px;
+    }
+
 
     .glass{
         width: 18px;
@@ -313,6 +324,7 @@ body {
 
     .glass-button {
         width: 40px;
+        height: 33px;
     }
 
     .glass{

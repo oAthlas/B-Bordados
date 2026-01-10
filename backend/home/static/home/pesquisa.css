@@ -8,23 +8,28 @@
     margin-left: 90px;
 }
 
-/* ===== LAYOUT ===== */
 .search-layout {
-    margin-top: 50px;
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 20px;
-    align-items: start;
-}
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+        margin-left: 40px;
+    }
 
-/* ===== FILTROS ===== */
-.search-filters {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+    /* Filtros no topo */
+    .search-filters {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 20px; 
+        margin-top: 30px;
+    }
+    /* Produto */
+    .product-card {
+        
+        margin-left: 0;
+        display: flex;
+    }
 
 .search-filters button {
+   
     width: 150px;
     padding: 10px;
     border: none;
@@ -32,7 +37,8 @@
     color: #282828;
     border-radius: 8px;
     cursor: pointer;
-    margin-left: 80px;
+    margin-left: 20px;
+    margin-bottom: 10px;
 }
 
 .search-filters button:hover {
@@ -40,16 +46,7 @@
     color: #f9f6ef;
 }
 
-/* ===== PRODUTO ===== */
-.product-card {
-    grid-column: 2;
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: 20px;
-    align-items: center;
-    margin-bottom: 5px;
-    margin-left: 40px;
-}
+
 
 /* ===== IMAGEM ===== */
 .product-image {
@@ -58,18 +55,20 @@
     border-radius: 8px;
     box-shadow: 1px 1px 4px #ccc;
     object-fit: cover;
+    margin-right: 20px;
+    margin-bottom: 40px;
+    margin-left: 60px;
 }
 
 /* ===== INFO ===== */
 .product-info {
-    margin-top: 0;
+    margin-top: 10px;
 }
 
 .product-link {
     text-decoration: none;
     color: #282828;
 }
-
 .product-link:hover{
     color: #f1119b;
 }
@@ -133,7 +132,6 @@
     /* Filtros no topo */
     .search-filters {
         flex-direction: row;
-        
         flex-wrap: wrap;
         margin-bottom: 20px;
     }
@@ -154,6 +152,7 @@
     .product-image {
         width: 200px;
         height: 200px;
+        margin-left: 30px;
     }
 
     .product-installments {
@@ -200,6 +199,8 @@
     .product-image {
         width: 140px;
         height: 140px;
+        margin-left: 0px;
+        margin-bottom: 20px;
     }
 
     /* Textos */
