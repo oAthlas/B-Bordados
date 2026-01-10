@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
   {% load static %}
+  <link rel="icon" href="{% static 'home/favicon.png' %}" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Finalizar compra - B Bordados</title>
@@ -34,7 +35,6 @@
           <div class="product-info">
             <h3>{{ item.product.name }}</h3>
             <span>R$ {{ item.product.price }}</span>
-            <small>Até {{ item.product.installments_count }}x sem juros</small> <br>
             <a href="{% url 'remove_from_cart' item.id %}"> Remover </a> 
           </div>
         </div>

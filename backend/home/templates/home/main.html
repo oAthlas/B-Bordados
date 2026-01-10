@@ -46,17 +46,17 @@
 
     </div>
             <!-- texto, centro da página -->
-    <h1 class="texto"> Produtos Em Destaque </h1>
+    <h1 class="texto"> Categorias </h1>
 
             <!-- Botões de filtro -->
     <div class="filtro">
-            
-        <a href="?sort=price_asc"><button>Menor Valor</button></a>
-        <a href="?sort=price_desc"><button>Maior valor</button></a>
-        <a href="?sort=newest"><button>Itens novos</button></a>
-        <a href="?sort=name_asc"><button>A-Z</button></a>
-        
+      {% for category in categories %}
+        <a href="?category={{ category.slug }}"><button>{{ category.name }}</button></a>
+      {% endfor %}        
     </div>      
+
+    <h1 class="texto"> Produtos Em Destaque </h1>
+
             <!-- arquivos de venda -->
       
         <div class="produtos">

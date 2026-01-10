@@ -12,6 +12,7 @@ from django.http import HttpResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from .models import Order
+from django.contrib import messages
 
 @login_required
 def checkout_view(request):
@@ -21,6 +22,11 @@ def checkout_view(request):
 def checkout_pay(request):
     cart = request.user.cart
     cart_items = cart.items.select_related("product")
+    customer = request.user.customer
+
+    if not customer.confirmed_data:
+        messages.error(request, "Por favor, confirme seus dados antes de prosseguir para o pagamento.")
+        return redirect("profile")
 
     if not cart_items.exists():
         return redirect("home")
@@ -40,36 +46,18 @@ def checkout_pay(request):
             price=item.product.price
         )
 
+    if order.payment_url and order.status == "pending":
+        return redirect(order.payment_url)
+
     payment_url, abacate_id = create_abacate_payment(order)
 
     order.abacate_id = abacate_id
-    order.save()
+    order.payment_url = payment_url
+    order.save(update_fields=["abacate_id", "payment_url"])
 
     cart_items.delete()
 
     return redirect(payment_url)
-
-
-@csrf_exempt
-def abacate_webhook(request):
-    data = json.loads(request.body)
-
-    external_id = data.get("externalId")
-    status = data.get("status")
-
-    try:
-        order = Order.objects.get(external_id=external_id)
-    except Order.DoesNotExist:
-        return HttpResponse(status=404)
-
-    if status == "paid":
-        order.status = "paid"
-        order.save()
-
-        # aqui você libera o download
-        # envia email, etc
-
-    return HttpResponse(status=200)
 
 @csrf_exempt
 @require_POST
@@ -95,8 +83,8 @@ def abacate_webhook(request):
     except Order.DoesNotExist:
         return HttpResponse("Order not found", status=200)
 
-    if status == "PAID":
-        order.status = "PAID"
+    if status == "paid":
+        order.status = "paid"
         order.save(update_fields=["status"])
 
     elif status in ("CANCELED", "EXPIRED"):

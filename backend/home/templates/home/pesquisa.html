@@ -20,10 +20,10 @@
 
 <div class="search-layout">
     <div class="search-filters">
-        <a href="?q={{ query }}&sort=price_asc"><button>Menor Valor</button></a>
-        <a href="?q={{ query }}&sort=price_desc"><button>Maior valor</button></a>
-        <a href="?q={{ query }}&sort=newest"><button>Itens novos</button></a>
-    </div>  
+    {% for category in categories %}
+        <a href="?q={{ query }}&category={{ category.slug }}"><button>{{ category.name }}</button></a>
+    {% endfor %}
+    </div>
 
 {% for product in products %}    
     <div class="product-card">
@@ -37,9 +37,6 @@
             </a>
 
             <p class="product-price">R${{ product.price|floatformat:2 }}</p>
-            <p class="product-installments">
-                {{ product.installments_count }}x de {{ product.installments_value }}
-            </p>
 
             <form method="post" action="{% url 'add_to_cart' product.id %}">
                 {% csrf_token %}
