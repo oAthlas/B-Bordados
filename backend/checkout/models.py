@@ -19,8 +19,9 @@ class Order(models.Model):
         default='pending'
     )
 
-    payment_external_id = models.CharField(max_length=100, unique=True)
-    payment_getway = models.CharField(max_length=30, blank=True, null=True)
+    external_id = models.CharField(max_length=100, unique=True)
+
+    payment_external_id = models.CharField(max_length=100, blank=True, null=True)
     payment_url = models.URLField(blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)

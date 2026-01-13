@@ -35,7 +35,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     ".onrender.com",
-
+    "127.0.0.1"
 ]
 
 
@@ -170,13 +170,13 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
-ABACATE_API_KEY = os.getenv("ABACATE_API_KEY")
-ABACATE_API_URL = "https://api.abacatepay.com/v1/billing/create"
+# payment getway
 
-ABACATE_RETURN_URL = "https://seusite.com/checkout/return"
-ABACATE_COMPLETION_URL = "https://seusite.com/checkout/completed"
-
+MP_SUCCESS_URL = "https://b-bordados.onrender.com/accounts/my-products/"
+MP_FAILURE_URL = "https://b-bordados.onrender.com/accounts/my-products/"
+MP_PENDING_URL = "https://b-bordados.onrender.com/accounts/my-products/"
 # Cloudinary
+
 
 cloudinary.config(
     cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),

@@ -58,11 +58,9 @@ def checkout_pay(request):
     payment = gateway.create_payment(order)
 
     # 🔹 salva dados do pagamento
-    order.payment_gateway = gateway.name
     order.payment_external_id = payment["external_id"]
     order.payment_url = payment["url"]
     order.save(update_fields=[
-        "payment_gateway",
         "payment_external_id",
         "payment_url"
     ])
