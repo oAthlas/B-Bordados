@@ -3,9 +3,9 @@ from checkout.models import Order, OrderItem
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'total', 'status', 'external_id', 'abacate_id', 'created_at')
+    list_display = ('id', 'user', 'total', 'status', 'payment_external_id', 'payment_getway', 'created_at')
     list_filter = ('status', 'created_at')
-    search_fields = ('user__username', 'external_id', 'abacate_id')
+    search_fields = ('user__username', 'payment_external_id', 'payment_getway')
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):

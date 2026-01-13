@@ -1,8 +1,9 @@
+import requests
+import json
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from .models import Order, OrderItem
-from .services import create_abacate_payment
-from home.models import CartItem, Cart
+from .services import MercadoPagoGateway
 import uuid
 import json
 from django.views.decorators.csrf import csrf_exempt
@@ -13,11 +14,13 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from .models import Order
 from django.contrib import messages
+from django.conf import settings
 
 @login_required
 def checkout_view(request):
     return render(request, "checkout/checkout.html")
 
+@login_required
 @login_required
 def checkout_pay(request):
     cart = request.user.cart
@@ -31,12 +34,12 @@ def checkout_pay(request):
     if not cart_items.exists():
         return redirect("home")
 
-    external_id = str(uuid.uuid4())
-
+    # 🔹 cria pedido
     order = Order.objects.create(
         user=request.user,
         total=sum(item.product.price for item in cart_items),
-        external_id=external_id
+        external_id=str(uuid.uuid4()),
+        status="pending"
     )
 
     for item in cart_items:
@@ -46,50 +49,69 @@ def checkout_pay(request):
             price=item.product.price
         )
 
-    if order.payment_url and order.status == "pending":
+    # 🔹 evita criar pagamento duplicado
+    if order.payment_url:
         return redirect(order.payment_url)
 
-    payment_url, abacate_id = create_abacate_payment(order)
+    # 🔹 chama o gateway
+    gateway = MercadoPagoGateway()
+    payment = gateway.create_payment(order)
 
-    order.abacate_id = abacate_id
-    order.payment_url = payment_url
-    order.save(update_fields=["abacate_id", "payment_url"])
+    # 🔹 salva dados do pagamento
+    order.payment_gateway = gateway.name
+    order.payment_external_id = payment["external_id"]
+    order.payment_url = payment["url"]
+    order.save(update_fields=[
+        "payment_gateway",
+        "payment_external_id",
+        "payment_url"
+    ])
 
     cart_items.delete()
 
-    return redirect(payment_url)
+    return redirect(order.payment_url)
 
 @csrf_exempt
-@require_POST
-def abacate_webhook(request):
+def mercadopago_webhook(request):
     try:
         payload = json.loads(request.body)
     except json.JSONDecodeError:
-        return HttpResponseBadRequest("Invalid JSON")
+        return HttpResponse(status=400)
 
-    # 🔎 estrutura padrão da Abacate Pay
-    data = payload.get("data")
-    if not data:
-        return HttpResponseBadRequest("Missing data")
+    payment_id = payload.get("data", {}).get("id")
 
-    billing_id = data.get("id")
-    status = data.get("status")
+    if not payment_id:
+        return HttpResponse(status=200)
 
-    if not billing_id or not status:
-        return HttpResponseBadRequest("Missing billing id or status")
+    # 🔎 Buscar pagamento na API do MP (SEGURANÇA)
+    response = requests.get(
+        f"https://api.mercadopago.com/v1/payments/{payment_id}",
+        headers={
+            "Authorization": f"Bearer {settings.MP_ACCESS_TOKEN}"
+        },
+        timeout=10
+    )
+
+    payment_data = response.json()
+
+    status = payment_data.get("status")
+    external_reference = payment_data.get("external_reference")
+
+    if not external_reference:
+        return HttpResponse(status=200)
 
     try:
-        order = Order.objects.get(abacate_id=billing_id)
+        order = Order.objects.get(external_id=external_reference)
     except Order.DoesNotExist:
-        return HttpResponse("Order not found", status=200)
+        return HttpResponse(status=200)
 
-    if status == "paid":
+    if status == "approved":
         order.status = "paid"
         order.save(update_fields=["status"])
 
-    elif status in ("CANCELED", "EXPIRED"):
-        order.status = "CANCELED"
+    elif status in ("cancelled", "rejected"):
+        order.status = "canceled"
         order.save(update_fields=["status"])
 
-    return HttpResponse("OK", status=200)
+    return HttpResponse(status=200)
 
