@@ -110,11 +110,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASE_URL = "postgresql://postgres:[2o8HaGM5TCf2wU4J]@db.vyxmvuazjfvcudvrmlhk.supabase.co:5432/postgres"
-
 DATABASES = {
-'default': dj_database_url.parse(
-    os.environ.get("DATABASE_URL")
+    "default": dj_database_url.config(
+        conn_max_age=600,
+        ssl_require=True,
+        default="sqlite:///db.sqlite3",
     )
 }
 
