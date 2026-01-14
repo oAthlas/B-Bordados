@@ -63,6 +63,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     'cloudinary',
     'cloudinary_storage',
+    'django.contrib.site'
+    'django.contrib.sitemaps',
 ]
 
 SITE_ID = 1
@@ -188,3 +190,9 @@ cloudinary.config(
     api_key=os.getenv("CLOUDINARY_API_KEY"),
     api_secret=os.getenv("CLOUDINARY_API_SECRET"),
 )
+
+# forcing https
+
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
