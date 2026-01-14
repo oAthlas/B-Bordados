@@ -15,7 +15,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/', null=True, blank=True)
 
     def get_absolute_url(self):
-        return reverse("product_detail", args=[self.id])
+        return reverse("product", args=[self.id])
 
     file = models.FileField(upload_to='product_archives/', null=True, blank=True)
 
