@@ -35,6 +35,8 @@ SECRET_KEY = 'django-insecure-cl44praeh-27&+)y5v1m6@7cpnt01q)yp3+w)!bhj_dkpnenkl
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    "www.bbordados.shop",
+    "bbordados.shop",
     ".onrender.com",
     "127.0.0.1"
 ]
