@@ -173,7 +173,7 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # payment getway
 
-MP_ACESS_TOKEN = os.getenv("MP_ACESS_TOKEN")
+MP_ACCESS_TOKEN = os.getenv("MP_ACESS_TOKEN")
 
 MP_SUCCESS_URL = "https://b-bordados.onrender.com/accounts/my-products/"
 MP_FAILURE_URL = "https://b-bordados.onrender.com/accounts/my-products/"
