@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     'cloudinary',
     'cloudinary_storage',
-    'django.contrib.site'
+    'django.contrib.sites'
     'django.contrib.sitemaps',
 ]
 
