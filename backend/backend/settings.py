@@ -32,7 +32,7 @@ load_dotenv(BASE_DIR / ".env")
 SECRET_KEY = 'django-insecure-cl44praeh-27&+)y5v1m6@7cpnt01q)yp3+w)!bhj_dkpnenkl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "www.bbordados.shop",
