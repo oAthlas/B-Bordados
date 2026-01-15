@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'home',
     'products',
     'checkout',
+    'services',
     'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -190,5 +191,7 @@ cloudinary.config(
     api_secret=os.getenv("CLOUDINARY_API_SECRET"),
 )
 
-# forcing https
-
+# Supabase settings
+SUPABASE_URL = os.environ.get("SUPABASE_URL")
+SUPABASE_SERVICE_KEY = os.environ.get("SUPABASE_SERVICE_KEY")
+SUPABASE_BUCKET = os.environ.get("SUPABASE_BUCKET", "products")

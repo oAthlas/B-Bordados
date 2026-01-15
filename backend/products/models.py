@@ -17,7 +17,7 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse("product", args=[self.id])
 
-    file = models.FileField(upload_to='product_archives/', null=True, blank=True)
+    file_path = models.CharField(max_length=500, null=True, blank=True)
 
     category = models.ForeignKey(
         Category,

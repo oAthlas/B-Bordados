@@ -1,16 +1,15 @@
-from django.shortcuts import render
-import os
-from django.http import FileResponse, Http404
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
+from django.http import Http404
+from .models import Product
 from checkout.models import OrderItem
-from products.models import Product
+from services.download import get_signed_url
+from django.contrib.auth.decorators import login_required
 
 @login_required
 def download_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
 
-    # Verifica se o usuário tem algum pedido PAGO desse produto
+    # Verifica se o usuário comprou e pagou esse produto
     has_paid = OrderItem.objects.filter(
         order__user=request.user,
         order__status='paid',
@@ -20,11 +19,8 @@ def download_product(request, product_id):
     if not has_paid:
         raise Http404("Você não tem acesso a este arquivo.")
 
-    if not product.file:
+    if not product.file_path:
         raise Http404("Arquivo não encontrado.")
 
-    return FileResponse(
-        product.file.open('rb'),
-        as_attachment=True,
-        filename=os.path.basename(product.file.name)
-    )
+    url = get_signed_url(product.file_path)
+    return redirect(url)
