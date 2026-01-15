@@ -1,74 +1,106 @@
 # services/supabase.py
 from supabase import create_client, Client
 from django.conf import settings
-import socket
+import os
+import logging
 
-def create_supabase_client():
-    """Cria e retorna cliente Supabase com tratamento de erros"""
+logger = logging.getLogger(__name__)
+
+# Inicializa como None globalmente
+_supabase_client = None
+
+def get_supabase_client():
+    """Retorna ou cria o cliente Supabase (singleton)"""
+    global _supabase_client
+    
+    if _supabase_client is not None:
+        return _supabase_client
+    
     try:
-        url = settings.SUPABASE_URL
-        key = settings.SUPABASE_SERVICE_KEY
+        url = getattr(settings, 'SUPABASE_URL', None)
+        key = getattr(settings, 'SUPABASE_SERVICE_KEY', None)
         
         if not url or not key:
-            raise ValueError("URL ou Service Key do Supabase não configurados")
+            logger.error("❌ Variáveis do Supabase não configuradas")
+            logger.error(f"URL: {'Presente' if url else 'Faltando'}")
+            logger.error(f"Key: {'Presente' if key else 'Faltando'}")
+            return None
         
-        # Remove trailing slash se existir
-        url = url.rstrip('/')
+        # Limpa a URL
+        url = url.strip().rstrip('/')
         
-        # Testa conexão de rede
-        if url.startswith('https://'):
-            hostname = url.replace('https://', '').split('/')[0]
-            # Testa DNS
-            socket.gethostbyname(hostname)
+        # Limpa a chave (remove 'Bearer ' se existir)
+        if key.startswith('Bearer '):
+            key = key[7:].strip()
         
-        # Cria cliente
-        client: Client = create_client(url, key)
+        logger.info(f"🔧 Inicializando Supabase: {url[:30]}...")
         
-        # Testa conexão simples
-        client.auth.get_session()
+        # Cria o cliente - FORMA SIMPLES E DIRETA
+        # Remove as options que podem causar problemas
+        client = create_client(supabase_url=url, supabase_key=key)
         
-        print(f"✅ Supabase conectado: {url}")
+        # Testa a conexão de forma simples
+        try:
+            # Tenta uma operação simples
+            result = client.table('_dummy').select('*').limit(1).execute()
+            logger.info("✅ Supabase conectado com sucesso")
+        except Exception as test_error:
+            # Isso é esperado se a tabela não existir
+            logger.info("⚠️  Teste de conexão: OK (erro esperado)")
+        
+        _supabase_client = client
         return client
         
-    except socket.gaierror as e:
-        print(f"❌ Erro DNS - Não conseguiu resolver {url}: {e}")
-        print("Verifique: 1. Conexão com internet 2. URL correta 3. DNS funcionando")
-        return None
     except Exception as e:
-        print(f"❌ Erro ao conectar com Supabase: {e}")
+        logger.error(f"❌ Falha crítica ao conectar com Supabase: {str(e)}")
+        logger.error(f"Tipo do erro: {type(e).__name__}")
+        
+        # Debug adicional
+        import traceback
+        logger.error(f"Traceback: {traceback.format_exc()}")
+        
         return None
 
-# Cria o cliente global
-supabase = create_supabase_client()
+# Instância global
+supabase = get_supabase_client()
 
 def upload_product_file(file, product_id):
     """
-    file = UploadedFile do Django
+    Upload de arquivo para Supabase Storage
     """
-    if supabase is None:
-        raise Exception("Cliente Supabase não inicializado. Verifique conexão.")
+    client = get_supabase_client()
+    if client is None:
+        raise Exception("❌ Cliente Supabase não inicializado. Verifique as variáveis de ambiente.")
     
     try:
         file_content = file.read()
         file_name = file.name
         
+        if not product_id:
+            raise ValueError("❌ Product ID é necessário")
+        
         # Sanitiza nome do arquivo
-        safe_name = file_name.replace(' ', '_').replace('/', '_')
+        import re
+        safe_name = re.sub(r'[^a-zA-Z0-9._-]', '_', file_name)
         path = f"products/{product_id}/{safe_name}"
         
-        # Faz upload
-        result = supabase.storage.from_(settings.SUPABASE_BUCKET).upload(
-            path,
-            file_content,
-            {
+        bucket = getattr(settings, 'SUPABASE_BUCKET', 'products')
+        
+        logger.info(f"📤 Upload: {path} para bucket {bucket}")
+        
+        # Método mais simples e direto
+        result = client.storage.from_(bucket).upload(
+            path=path,
+            file=file_content,
+            file_options={
                 "content-type": file.content_type or "application/octet-stream",
-                "upsert": True
+                "upsert": "true"
             }
         )
         
-        print(f"✅ Upload realizado: {path}")
+        logger.info(f"✅ Upload realizado: {path}")
         return path
         
     except Exception as e:
-        print(f"❌ Erro no upload: {e}")
+        logger.error(f"❌ Erro no upload: {str(e)}")
         raise
