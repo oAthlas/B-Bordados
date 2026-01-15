@@ -191,6 +191,10 @@ def change_password(request):
         new_password = request.POST.get('new_password')
         confirmation = request.POST.get('confirm_new_password')
         actual_password = user.check_password(request.POST.get('actual_password'))
+
+        if not user.has_usable_password():
+            messages.error(request, "Seu usuário não possui uma senha configurada. Se você criou sua conta via Google/Facebook Login, por favor use somente este método para entrar em sua conta. Se ainda precisar de uma senha entre em contato com o suporte.")
+            return redirect('settings')
         
         if not actual_password:
             messages.error(request, "Senha atual incorreta.")
