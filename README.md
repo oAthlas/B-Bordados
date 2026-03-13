@@ -1,4 +1,4 @@
-# B-Bordados E-commerce Platform Documentation
+# B-Bordados E-commerce Platform
 
 ## Visão Geral do Projeto
 O B-Bordados é uma plataforma de e-commerce dedicada à comercialização de bordados personalizados, oferecendo uma experiência única e intuitiva para os clientes.
